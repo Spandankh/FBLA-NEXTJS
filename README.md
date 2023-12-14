@@ -12,6 +12,6 @@ Technologies used include:
 1. Run npm run dev and go to localhost:3000
 1. Enjoy! 
 
-<bold>
+<h1>
   All the number & text in this website are soley meant for showcase and are not real numbers.
-</bold>
+</h1>
