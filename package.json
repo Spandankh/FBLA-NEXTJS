@@ -1,27 +1,51 @@
 {
-  "name": "fbla-gym",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.3"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.3"
-  }
+    "name": "fbla-gym",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev --turbo",
+        "build": "prisma generate && next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.17",
+        "@prisma/client": "^5.7.0",
+        "@radix-ui/react-toggle": "^1.0.3",
+        "@tiptap/extension-hard-break": "^2.1.13",
+        "@tiptap/extension-text-style": "^2.1.13",
+        "@tiptap/pm": "^2.1.13",
+        "@tiptap/react": "^2.1.13",
+        "@tiptap/starter-kit": "^2.1.13",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.0.0",
+        "dayjs": "^1.11.10",
+        "framer-motion": "^10.16.16",
+        "html-react-parser": "^5.0.7",
+        "lucide-react": "^0.294.0",
+        "moment": "^2.29.4",
+        "moment-timezone": "^0.5.43",
+        "next": "14.0.3",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-icons": "^4.12.0",
+        "tailwind-merge": "^2.1.0",
+        "tailwindcss-animate": "^1.0.7",
+        "ts-node": "^10.9.2",
+        "typewriter-effect": "^2.21.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "autoprefixer": "^10.0.1",
+        "eslint": "^8",
+        "eslint-config-next": "14.0.3",
+        "postcss": "^8",
+        "prettier": "^3.1.0",
+        "prettier-plugin-tailwindcss": "^0.5.7",
+        "prisma": "^5.7.0",
+        "tailwindcss": "^3.3.0",
+        "typescript": "^5"
+    }
 }
