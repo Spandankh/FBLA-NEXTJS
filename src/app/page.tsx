@@ -4,7 +4,7 @@ import Image from 'next/image'
 import moment from 'moment-timezone'
 import { baseUrl } from '@/app/config'
 import RandomImage from '../../public/images/GymTrainer.png'
-
+import heroimage from '../../public/images/gym.jpg'
 const benefits = [
     {
         name: 'benefit 1',
@@ -51,25 +51,35 @@ export default async function Home() {
         .format('MMM-DD-YYYY h:mm A')
     return (
         <>
-            <div className="bg-[url('../../public/images/gym.jpg')] bg-cover bg-center  m-auto">
-                <div className="text-white font-anton">
-                    <div className="max-w-auto m-auto w-full h-[70vh] text-center flex flex-col justify-center px-8">
-                        <h1 className="text-[50px] md:text-[100px] font-bold md:py-6 ">
-                            TEXT TEXT TEXT TEXT
-                            <span className="text-blue-600"> TEXT</span>
-                        </h1>
-
-                        <div className="flex justify-center">
-                            <Link
-                                href="/career"
-                                className="inline-block text-[20px] bg-blue-500 text-white font-style: normal py-5 px-5 max-w-[230px] max-h-auto uppercase rounded-[2rem] "
-                            >
-                                EXPLORE CAREERS
-                            </Link>
+            <section>
+                <div className="relative h-[70vh] overflow-hidden">
+                    <Image
+                        alt=""
+                        src={heroimage}
+                        placeholder="blur"
+                        quality={100}
+                        fill
+                        className="brightness-50"
+                        style={{ objectFit: 'cover' }}
+                    />
+                    <div className="text-white font-anton">
+                        <div className="relative h-[50vh] md:text-center flex flex-col justify-center mt-10 my-20">
+                            <h1 className="text-[50px] md:text-[100px] font-bold md:py-6 ">
+                                TEXT TEXT TEXT TEXT
+                                <span className="text-blue-600"> TEXT</span>
+                                <div className="flex justify-center">
+                                    <Link
+                                        href="/career"
+                                        className="inline-block text-[20px] bg-blue-500 text-white font-style: normal py-5 px-5 max-w-[230px] max-h-auto uppercase rounded-[2rem] "
+                                    >
+                                        EXPLORE CAREERS
+                                    </Link>
+                                </div>
+                            </h1>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <section className="border-t">
                 <div className="">

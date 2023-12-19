@@ -9,6 +9,9 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.5.1",
+        "@fortawesome/free-solid-svg-icons": "^6.5.1",
+        "@fortawesome/react-fontawesome": "^0.2.0",
         "@headlessui/react": "^1.7.17",
         "@prisma/client": "^5.7.0",
         "@radix-ui/react-toggle": "^1.0.3",
@@ -29,6 +32,7 @@
         "react": "^18",
         "react-dom": "^18",
         "react-icons": "^4.12.0",
+        "react-tabs": "^6.0.2",
         "tailwind-merge": "^2.1.0",
         "tailwindcss-animate": "^1.0.7",
         "ts-node": "^10.9.2",
