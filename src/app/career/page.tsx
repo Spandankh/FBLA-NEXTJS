@@ -45,23 +45,36 @@ export default async function Career() {
                     <section className="">
                         <div className="container px-5 py-24 mx-auto">
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                {res.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        className="bg-white w-[280px] h-[250px] px-4 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110"
-                                    >
-                                        <Link href={`/career/job/${item.id}`}>
-                                            <div className="text-left text-md uppercase text-[20px] font-semibold">
-                                                {item.jobName}
-                                            </div>
-                                            <div className="tracking-light">
-                                                <p className="text-left py-2 line-clamp-5 ">
-                                                    {item.jobDescription}
-                                                </p>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                ))}
+                                {res.map(
+                                    (
+                                        item: {
+                                            jobDescription: string
+                                            id: string
+                                            jobName: string
+                                            fullTime: boolean
+                                            createdAt: string
+                                        },
+                                        index: React.Key | null | undefined
+                                    ) => (
+                                        <div
+                                            key={index}
+                                            className="bg-white w-[280px] h-[250px] px-4 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110"
+                                        >
+                                            <Link
+                                                href={`/career/job/${item.id}`}
+                                            >
+                                                <div className="text-left text-md uppercase text-[20px] font-semibold">
+                                                    {item.jobName}
+                                                </div>
+                                                <div className="tracking-light">
+                                                    <p className="text-left py-2 line-clamp-5 ">
+                                                        {item.jobDescription}
+                                                    </p>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    )
+                                )}
                             </div>
                         </div>
                     </section>
