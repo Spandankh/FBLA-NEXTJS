@@ -1,12 +1,8 @@
-'use client'
-
 import Image from 'next/image'
-import { useState } from 'react'
 import wavyline from '../../../public/images/samuel-girven-fqMu99l8sqo-unsplash.jpg'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import Link from 'next/link'
 import Tab from './tab'
-import rocket from '../../../public/images/rocket.png'
 
 export default function Mission() {
     return (
@@ -23,19 +19,18 @@ export default function Mission() {
                             className="brightness-50"
                             style={{ objectFit: 'cover' }}
                         />
-                        <div className="absolute bottom-0 left-0 w-full overflow-hidden hidden md:block">
+                        <div className="absolute bottom-0 left-0 w-full overflow-hidden block">
                             <svg
+                                className="h-20 w-full "
                                 xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 1200 120"
-                                className=""
+                                viewBox="0 0 1440 320"
+                                preserveAspectRatio="none"
                             >
                                 <path
-                                    fill="#ffffff"
-                                    className="  "
-                                    fillOpacity="1"
-                                    strokeWidth="4"
-                                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-                                ></path>
+                                    className="text-white fill-current"
+                                    fill-opacity="0.99"
+                                    d="M0,288L60,245.3C120,203,240,117,360,112C480,107,600,181,720,229.3C840,277,960,299,1080,256C1200,213,1320,107,1380,53.3L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+                                ></path>{' '}
                             </svg>
                         </div>
                     </div>
@@ -50,7 +45,7 @@ export default function Mission() {
                             </p>
                             <Link
                                 href="/career"
-                                className="bg-blue-500 text-white mt-10 p-5 max-w-[230px] justify-center flex md:w-1/6 rounded-[.5rem] hover:bg-blue-600"
+                                className="bg-blue-500 text-white mt-10 p-3 max-w-[230px] justify-center flex md:w-1/6 rounded-[.5rem] hover:bg-blue-600"
                             >
                                 See Open Position
                             </Link>
