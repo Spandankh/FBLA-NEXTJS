@@ -32,10 +32,6 @@ const Tabs = () => {
         },
     ]
 
-    const handleTabChange = (e) => {
-        setCurrentTab(e.target.id)
-    }
-
     return (
         <div className="container px-10 py-10">
             <div className="flex flex-wrap justify-center">
@@ -43,7 +39,7 @@ const Tabs = () => {
                     <button
                         key={index}
                         id={tab.id}
-                        onClick={handleTabChange}
+                        onClick={() => setCurrentTab(tab.id)}
                         className={`cursor-pointer ${
                             currentTab === tab.id
                                 ? 'bg-blue-700 rounded-[1rem] text-white'

@@ -1,10 +1,13 @@
 'use client'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import { LayoutDashboard } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
-const UserNavBar = ({ children }) => {
+interface Props {
+    children?: ReactNode
+}
+const UserNavBar = ({ children, ...props }: Props) => {
     const pathname = usePathname()
     return (
         <div className="flex">
