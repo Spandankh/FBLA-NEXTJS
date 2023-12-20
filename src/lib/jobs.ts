@@ -16,7 +16,7 @@ const newJob = async (jobName: string, jobLocation: string, jobDescription: stri
 
 const getJobs = async () => {
     const job = await prisma.post.findMany();
-    return job
+    return JSON.stringify(job)
 }
 const getSingleJob = async (id: string) => {
     const job = await prisma.post.findUnique({ where: { id } });

@@ -4,10 +4,9 @@ import Image from 'next/image'
 import RandomImage from '../../../public/images/GymTrainer.png'
 import Link from 'next/link'
 import { getJobs } from '@/lib/jobs'
-import { Job } from '@/lib/type'
 
 export default async function Career() {
-    const res = (await getJobs()) as Job[]
+    const res = await getJobs()
     return (
         <div className="bg-gray-100">
             <div className="">
@@ -42,7 +41,7 @@ export default async function Career() {
                     </div>
                     <section className="">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            {JSON.parse(res.toString()).map(
+                            {JSON.parse(res).map(
                                 (item: {
                                     id: string
                                     jobName: string
@@ -64,7 +63,7 @@ export default async function Career() {
                                         </Link>
                                     </div>
                                 )
-                            )}
+                            )}{' '}
                         </div>
                     </section>
                 </MaxWidthWrapper>

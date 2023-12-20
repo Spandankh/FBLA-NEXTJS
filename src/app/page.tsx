@@ -47,7 +47,7 @@ const benefits = [
 ]
 
 export default async function Home() {
-    const res = (await getJobs()) as Job[]
+    const res = await getJobs()
     return (
         <>
             <section>
