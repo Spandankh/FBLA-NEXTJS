@@ -6,7 +6,10 @@ import Image from 'next/image'
 import RandomImage from '../../../public/images/GymTrainer.png'
 import Link from 'next/link'
 export default async function Career() {
-    const req = await fetch(`${baseUrl}/api/job`, { cache: 'no-store' })
+    const req = await fetch(`${baseUrl}/api/job`, {
+        cache: 'no-store',
+        method: 'GET',
+    })
     const res = await req.json()
 
     return (
