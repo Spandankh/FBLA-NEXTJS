@@ -13,12 +13,12 @@ const NavBar = () => {
     return (
         <nav className="sticky top-0 z-10 bg-whitemax-w-auto bg-[#171717] mx-auto h-auto flex items-center justify-between text-white font-equinox-sans">
             <h1 className="w-full text-3xl font-bold px-4">WARIO</h1>
-            <ul className="hidden md:flex mr-auto uppercase">
+            <ul className="hidden md:flex mr-auto  uppercase">
                 <Link className="p-4" href="/">
                     Home
                 </Link>
                 <Link className="p-4" href="/mission">
-                    Mission
+                    About
                 </Link>
                 <Link className="p-4" href="/career">
                     Careers
@@ -53,8 +53,8 @@ const NavBar = () => {
                     <li className="p-4 border-b border-gray-600">
                         <Link href="/home">HOME</Link>
                     </li>
-                    <li className="p-4 border-b border-gray-600">
-                        <Link href="/mission">MISSION</Link>
+                    <li className="p-4 border-b border-gray-600 ">
+                        <Link href="/mission"> About Us</Link>
                     </li>
                     <li className="p-4 border-b border-gray-600">
                         <Link href="/career">CAREERS</Link>

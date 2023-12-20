@@ -115,7 +115,7 @@ export default function Mission() {
                 >
                     <path
                         className="text-[#F3F3F3] fill-current"
-                        fill-opacity="0.99"
+                        fillOpacity="0.99"
                         d="M0,288L60,245.3C120,203,240,117,360,112C480,107,600,181,720,229.3C840,277,960,299,1080,256C1200,213,1320,107,1380,53.3L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
                     ></path>
                 </svg>
@@ -135,7 +135,7 @@ export default function Mission() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path
                         className="text-[#F3F3F3] fill-current"
-                        fill-opacity="1"
+                        fillOpacity="1"
                         d="M0,224L48,197.3C96,171,192,117,288,90.7C384,64,480,64,576,101.3C672,139,768,213,864,208C960,203,1056,117,1152,101.3C1248,85,1344,139,1392,165.3L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
                     ></path>
                 </svg>
@@ -155,7 +155,7 @@ export default function Mission() {
 
                     <div className="container px-5 py-10 mx-auto">
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            <div className="bg-gradient-to-tr from-sky-400 to-sky-200 max-w-[400px] h-[450px] pt-10 px-10 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110">
+                            <div className="bg-gradient-to-tr from-sky-400 to-sky-200 max-w-[400px] h-[450px] pt-10 px-10 py-6 shadow-lg rounded-2xl border-solid border-4  border-sky-500  transform transition duration-500 hover:scale-110">
                                 <div className="text-left text-[30px] uppercase px-5 pb-3 font-bold">
                                     Integrity
                                 </div>
@@ -167,7 +167,7 @@ export default function Mission() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="bg-gradient-to-tr from-sky-400 to-sky-200 max-w-[400px] h-[450px] pt-10 px-10 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110">
+                            <div className="bg-gradient-to-tr from-sky-400 to-sky-200 max-w-[400px] h-[450px] pt-10 px-10 py-6 shadow-lg rounded-2xl border-solid border-4  border-sky-500  transform transition duration-500 hover:scale-110">
                                 <div className="text-left text-[30px] uppercase px-5 pb-3 font-bold">
                                     Integrity
                                 </div>
@@ -192,6 +192,37 @@ export default function Mission() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="mt-10">
+                <svg
+                    className="h-24 w-full"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1440 320"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        className="text-[#F3F3F3] fill-current"
+                        fill-opacity="0.99"
+                        d="M0,288L60,245.3C120,203,240,117,360,112C480,107,600,181,720,229.3C840,277,960,299,1080,256C1200,213,1320,107,1380,53.3L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+                    ></path>
+                </svg>
+                <div className="bg-[#F3F3F3]">
+                    <div className="p-5 text-center">
+                        <div className="bg-gradient-to-r from-blue-800 to-green-300 bg-clip-text text-transparent text-4xl md:text-6xl font-bold pb-4">
+                            What are you waiting for?
+                        </div>
+                        <div className="text-3xl mb-4">
+                            Join Us In This Journey
+                        </div>
+                        <Link
+                            href="/career"
+                            className="bg-blue-500 text-white mt-5 p-5 max-w-[230px]  backdrop: md:w-1/6 rounded-[.5rem] hover:bg-blue-600 inline-block"
+                        >
+                            View Open Postions
+                        </Link>
                     </div>
                 </div>
             </section>
