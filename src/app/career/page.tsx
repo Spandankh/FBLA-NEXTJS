@@ -1,17 +1,13 @@
-import { revalidatePath } from 'next/cache'
 import React, { useState } from 'react'
-import { baseUrl } from '@/app/config'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import Image from 'next/image'
 import RandomImage from '../../../public/images/GymTrainer.png'
 import Link from 'next/link'
-export default async function Career() {
-    const req = await fetch(`${baseUrl}/api/job`, {
-        cache: 'no-store',
-        method: 'GET',
-    })
-    const res = await req.json()
+import { getJobs } from '@/lib/jobs'
+import { Job } from '@/lib/type'
 
+export default async function Career() {
+    const res = (await getJobs()) as Job[]
     return (
         <div className="bg-gray-100">
             <div className="">
@@ -44,41 +40,31 @@ export default async function Career() {
                             Explore Our Open Positions
                         </h1>
                     </div>
-
                     <section className="">
-                        <div className="container px-5 py-24 mx-auto">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                {res.map(
-                                    (
-                                        item: {
-                                            jobDescription: string
-                                            id: string
-                                            jobName: string
-                                            fullTime: boolean
-                                            createdAt: string
-                                        },
-                                        index: React.Key | null | undefined
-                                    ) => (
-                                        <div
-                                            key={index}
-                                            className="bg-white w-[280px] h-[250px] px-4 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110"
-                                        >
-                                            <Link
-                                                href={`/career/job/${item.id}`}
-                                            >
-                                                <div className="text-left text-md uppercase text-[20px] font-semibold">
-                                                    {item.jobName}
-                                                </div>
-                                                <div className="tracking-light">
-                                                    <p className="text-left py-2 line-clamp-5 ">
-                                                        {item.jobDescription}
-                                                    </p>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    )
-                                )}
-                            </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            {JSON.parse(res.toString()).map(
+                                (item: {
+                                    id: string
+                                    jobName: string
+                                    jobDescription: string
+                                }) => (
+                                    <div
+                                        key={item.id}
+                                        className="bg-white w-[280px] h-[250px] px-4 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110"
+                                    >
+                                        <Link href={`/career/job/${item.id}`}>
+                                            <div className="text-left text-md uppercase text-[20px] font-semibold">
+                                                {item.jobName}
+                                            </div>
+                                            <div className="tracking-light">
+                                                <p className="text-left py-2 line-clamp-5 ">
+                                                    {item.jobDescription}
+                                                </p>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                )
+                            )}
                         </div>
                     </section>
                 </MaxWidthWrapper>

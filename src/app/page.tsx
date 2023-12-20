@@ -6,6 +6,8 @@ import { baseUrl } from '@/app/config'
 import RandomImage from '../../public/images/GymTrainer.png'
 import heroimage from '../../public/images/gym.jpg'
 import { Key } from 'react'
+import { getJobs } from '@/lib/jobs'
+import { Job } from '@/lib/type'
 const benefits = [
     {
         name: 'benefit 1',
@@ -45,11 +47,7 @@ const benefits = [
 ]
 
 export default async function Home() {
-    const req = await fetch(`${baseUrl}/api/job`, { cache: 'no-store' })
-    const res = await req.json()
-    const date = moment('2020-04-27T14:44:42Z')
-        .tz('America/New_York')
-        .format('MMM-DD-YYYY h:mm A')
+    const res = (await getJobs()) as Job[]
     return (
         <>
             <section>
@@ -181,46 +179,50 @@ export default async function Home() {
                     </h1>
 
                     <div className="mx-auto grid gap-3 mt-10">
-                        {res.slice(0, 3).map(
-                            (
-                                item: {
-                                    jobDescription: string
-                                    id: string
-                                    jobName: string
-                                    fullTime: boolean
-                                    createdAt: string
-                                },
-                                index: Key | null | undefined
-                            ) => (
-                                <Link
-                                    href={`/career/job/${item.id}`}
-                                    key={index}
-                                    className=" flex justify-center overflow-hidden"
-                                >
-                                    <li className="w-[700px] h-auto shadow-lg  flex flex-col p-4 my-4 hover:scale-105 rounded-2xl duration-300 bg-white">
-                                        <div className="text-left text-md uppercase text-[16px] font-semibold">
-                                            {item.jobName}{' '}
-                                            <span className="text-gray-700 font-light">
-                                                {item.fullTime
-                                                    ? 'Full Time'
-                                                    : 'Part Time'}{' '}
-                                            </span>
-                                        </div>
-                                        <div className="text-sm">
-                                            Posted at: {''}
-                                            {moment(item.createdAt)
-                                                .tz('America/New_York')
-                                                .format('MMM-DD-YYYY h:mm A')}
-                                        </div>
-                                        <div className="tracking-light">
-                                            <p className="text-left py-2 line-clamp-3">
-                                                {item.jobDescription}
-                                            </p>
-                                        </div>
-                                    </li>
-                                </Link>
-                            )
-                        )}
+                        {JSON.parse(res.toString())
+                            .slice(0, 3)
+                            .map(
+                                (
+                                    item: {
+                                        jobDescription: string
+                                        id: string
+                                        jobName: string
+                                        fullTime: boolean
+                                        createdAt: string
+                                    },
+                                    index: string
+                                ) => (
+                                    <Link
+                                        href={`/career/job/${item.id}`}
+                                        key={index}
+                                        className=" flex justify-center overflow-hidden"
+                                    >
+                                        <li className="w-[700px] h-auto shadow-lg  flex flex-col p-4 my-4 hover:scale-105 rounded-2xl duration-300 bg-white">
+                                            <div className="text-left text-md uppercase text-[16px] font-semibold">
+                                                {item.jobName}{' '}
+                                                <span className="text-gray-700 font-light">
+                                                    {item.fullTime
+                                                        ? 'Full Time'
+                                                        : 'Part Time'}{' '}
+                                                </span>
+                                            </div>
+                                            <div className="text-sm">
+                                                Posted at: {''}
+                                                {moment(item.createdAt)
+                                                    .tz('America/New_York')
+                                                    .format(
+                                                        'MMM-DD-YYYY h:mm A'
+                                                    )}
+                                            </div>
+                                            <div className="tracking-light">
+                                                <p className="text-left py-2 line-clamp-3">
+                                                    {item.jobDescription}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                )
+                            )}
                     </div>
                 </div>
             </section>
