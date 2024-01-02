@@ -41,7 +41,7 @@ const authOptions: NextAuthOptions = {
             }
         }),
     ],
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.SECRET,
     callbacks: {
         session: ({ session, token }) => {
             console.log('Session Callback', { session, token })
