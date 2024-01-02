@@ -1,12 +1,12 @@
-import { getApplication } from '@/lib/application'
 import { Separator } from '@/components/ui/separator'
 import { DataTable } from './data-table'
 import { columns } from './columns'
-import { Application } from '@/lib/type'
+import { Application, Job } from '@/lib/type'
+import { getJobs } from '@/lib/jobs'
 export const dynamic = 'force-dynamic'
 
-async function getData(): Promise<Application[]> {
-    return await getApplication()
+async function getData(): Promise<Job[]> {
+    return JSON.parse(await getJobs())
 }
 
 export default async function Application() {
@@ -16,7 +16,7 @@ export default async function Application() {
             <div className="bg-gray-200 h-screen w-screen">
                 <div className="flex-1 p-3 md:px-10 pb-3 pt-6">
                     <h1 className="text-3xl font-bold tracking-tight">
-                        Applications
+                        Active Job Listing
                     </h1>
                 </div>
 

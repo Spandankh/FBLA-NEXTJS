@@ -1,72 +1,103 @@
-import React, { useState } from 'react'
+import React from 'react'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import Image from 'next/image'
-import RandomImage from '../../../public/images/GymTrainer.png'
+import CareerLanding from '../../../public/images/CareerLandingHero.jpg'
 import Link from 'next/link'
 import { getJobs } from '@/lib/jobs'
+import parse from 'html-react-parser'
+import { Briefcase, MapPin } from 'lucide-react'
 
 export default async function Career() {
     const res = await getJobs()
     return (
-        <div className="bg-gray-100">
+        <div className="bg-gray-50">
             <div className="">
                 <div className="md:flex-row	flex-col items-center flex  justify-center pb-10">
                     <div className="p-5 justify-center md:w-1/3">
-                        <div className=" text-[#19224a] text-4xl md:text-6xl font-bold pb-3">
+                        <div className=" text-black text-4xl md:text-[40px] pb-3 text-center">
                             Wario Careers
                         </div>
-                        <div className="text-2xl mb-2">
-                            At wario you feel life.......... .... At wario you
-                            feel life.......... ....At wario you feel
-                            life.......... ....At wario you feel life..........
-                            ....
-                        </div>
+                        <p
+                            className="text-2xl md:text-[56px] text-center text-pretty leading-[64px] font-bold
+"
+                        >
+                            Makes your works days brighter
+                        </p>
                     </div>
 
                     <Image
-                        src={RandomImage}
-                        alt="Picture of the author"
-                        width={500}
-                        height={500}
-                        className="rounded-xl md:w-[650px] md:mt-20 p-4 md:p-1"
+                        src={CareerLanding}
+                        alt="Career Landing"
+                        width={950}
+                        height={563}
+                        className="rounded-xl mx-2 my-2 md:w-[950px] md:mt-20"
                     />
                 </div>
             </div>
             <section className="">
-                <MaxWidthWrapper className="my-5">
+                <div className="flex justify-center">
+                    <h1 className="capitalize text-[#19224a] text-[40px] mb-3 md:text-[54px] font-bold">
+                        Explore Our Open Positions
+                    </h1>
+                </div>
+                <section className="">
                     <div className="flex justify-center">
-                        <h1 className="capitalize text-[#19224a] text-[40px] md:text-[54px] font-bold">
-                            Explore Our Open Positions
-                        </h1>
-                    </div>
-                    <section className="">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div className="grid gap-4  grid-cols-1 md:grid-cols-3 items-center mx-auto">
                             {JSON.parse(res).map(
                                 (item: {
                                     id: string
                                     jobName: string
                                     jobDescription: string
+                                    fullTime: boolean
                                 }) => (
-                                    <div
+                                    <Link
+                                        href={`career/job/${item.id}`}
                                         key={item.id}
-                                        className="bg-white w-[280px] h-[250px] px-4 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110"
+                                        className="bg-white md:w-[500px] h-[300px] px-4 py-6 shadow-lg rounded-2xl transform transition duration-500 hover:scale-110 border border-black"
                                     >
-                                        <Link href={`/career/job/${item.id}`}>
-                                            <div className="text-left text-md uppercase text-[20px] font-semibold">
+                                        <div>
+                                            <div className="text-left text-md uppercase text-[20px] font-semibold underline underline-offset-1">
                                                 {item.jobName}
                                             </div>
-                                            <div className="tracking-light">
-                                                <p className="text-left py-2 line-clamp-5 ">
-                                                    {item.jobDescription}
-                                                </p>
+                                            <div>
+                                                <div className="flex pt-5">
+                                                    <div className="flex items-center mr-5">
+                                                        <Briefcase className="mr-2" />
+                                                        <div>
+                                                            <p>Role</p>
+                                                            <h1 className="font-bold text-lg">
+                                                                {item.fullTime ||
+                                                                item.fullTime ===
+                                                                    null
+                                                                    ? 'Full Time'
+                                                                    : 'Part Time'}
+                                                            </h1>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center">
+                                                        <MapPin className="mr-2" />
+                                                        <div>
+                                                            <p>Location</p>
+                                                            <h1 className="font-bold text-lg">
+                                                                Manassas Park,
+                                                                VA
+                                                            </h1>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </Link>
-                                    </div>
+                                            <div className="tracking-light">
+                                                <div className="text-left py-2 line-clamp-5">
+                                                    {parse(item.jobDescription)}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
                                 )
-                            )}{' '}
+                            )}
                         </div>
-                    </section>
-                </MaxWidthWrapper>
+                    </div>
+                </section>
             </section>
         </div>
     )

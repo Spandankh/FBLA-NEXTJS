@@ -1,17 +1,19 @@
 import prisma from "@/lib/db"
-import { json } from "stream/consumers";
 
-const newJob = async (jobName: string, jobLocation: string, jobDescription: string, fullTime: boolean) => {
-    const newJob = await prisma.post.create({
-        data: {
-            jobName,
-            jobLocation,
-            jobDescription,
-            fullTime,
-        }
-    });
+const newJob = async (jobName: string, jobDescription: string,) => {
 
-    return JSON.stringify(newJob)
+    try {
+        await prisma.post.create({
+            data: {
+                jobName,
+                jobDescription
+            }
+        })
+    } catch (e) {
+        return "Something went wrong!"
+    }
+
+    return ("Created new application")
 }
 
 const getJobs = async () => {
@@ -19,8 +21,18 @@ const getJobs = async () => {
     return JSON.stringify(job)
 }
 const getSingleJob = async (id: string) => {
-    const job = await prisma.post.findUnique({ where: { id } });
+    const job = prisma.post.findUnique({ where: { id: id } });
     return job
 }
 
-export { getSingleJob, getJobs, newJob }
+const deleteSingleJob = async (id: string) => {
+    try {
+        const job = await prisma.post.delete({ where: { id } });
+        return job;
+    } catch (error) {
+        console.error(`Error deleting job with ID ${id}:`, error);
+        return null;
+    }
+};
+
+export { getSingleJob, getJobs, newJob, deleteSingleJob }

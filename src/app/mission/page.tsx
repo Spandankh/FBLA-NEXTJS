@@ -3,7 +3,8 @@ import wavyline from '../../../public/images/samuel-girven-fqMu99l8sqo-unsplash.
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import Link from 'next/link'
 import Tab from './tab'
-
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import IntegritySvg from '../../../public/images/undraw_business_deal_re_up4u.svg'
 export default function Mission() {
     return (
         <>
@@ -30,7 +31,7 @@ export default function Mission() {
                                     className="text-white fill-current"
                                     fill-opacity="0.99"
                                     d="M0,288L60,245.3C120,203,240,117,360,112C480,107,600,181,720,229.3C840,277,960,299,1080,256C1200,213,1320,107,1380,53.3L1440,0L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                                ></path>{' '}
+                                ></path>
                             </svg>
                         </div>
                     </div>
@@ -123,7 +124,7 @@ export default function Mission() {
                         <p className="text-2xl">Some more Random Text Woooo!</p>
                     </div>
 
-                    <div className="container flex justify-center items-center bg-white rounded-[2rem] shadow-2xl my-4">
+                    <div className="container flex justify-center items-center bg-white rounded-[2rem] shadow-2xl my-4 mx-auto">
                         <Tab />
                     </div>
                 </div>
@@ -138,7 +139,7 @@ export default function Mission() {
 
             <section className="">
                 <div className="">
-                    <div className="text-center  ">
+                    <div className="text-center ">
                         <h1 className="text-[#19224a] text-5xl font-bold pb-5">
                             Our Core Values
                         </h1>
@@ -149,43 +150,67 @@ export default function Mission() {
                     </div>
 
                     <div className="container px-5 py-10 mx-auto">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            <div className="bg-gradient-to-tr from-sky-400 to-sky-200 max-w-[400px] h-[450px] pt-10 px-10 py-6 shadow-lg rounded-2xl border-solid border-4  border-sky-500  transform transition duration-500 hover:scale-110">
-                                <div className="text-left text-[30px] uppercase px-5 pb-3 font-bold">
-                                    Integrity
-                                </div>
-                                <div className="tracking-light">
-                                    <p className="text-left text-[20px] px-5 line-clamp-5 ">
-                                        We conduct ourselves with honesty,
-                                        transparency, and ethical behavior in
-                                        everything we do.
+                        <div className="grid md:grid-cols-3 gap-6 mt-6">
+                            <Card className=" bg-gradient-to-br from-[#7B9FF2] to-[#4259C3] border-black  rounded-[15px]">
+                                <CardHeader>
+                                    <CardTitle className="text-black text-[30px]">
+                                        Core Value 3
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-[20px]">
+                                        Description of Core Value 3
                                     </p>
-                                </div>
-                            </div>
-                            <div className="bg-gradient-to-tr from-sky-400 to-sky-200 max-w-[400px] h-[450px] pt-10 px-10 py-6 shadow-lg rounded-2xl border-solid border-4  border-sky-500  transform transition duration-500 hover:scale-110">
-                                <div className="text-left text-[30px] uppercase px-5 pb-3 font-bold">
-                                    Integrity
-                                </div>
-                                <div className="tracking-light">
-                                    <p className="text-left text-[20px] px-5 line-clamp-5 ">
-                                        We conduct ourselves with honesty,
-                                        transparency, and ethical behavior in
-                                        everything we do.
+                                </CardContent>
+                                <CardContent className="w-full flex justify-center pt-5">
+                                    <Image
+                                        src={IntegritySvg}
+                                        width={250}
+                                        height={250}
+                                        alt="Integrity"
+                                    />
+                                </CardContent>
+                            </Card>
+                            <Card className=" bg-gradient-to-br from-[#7B9FF2] to-[#4259C3] border-black rounded-[15px]">
+                                <CardHeader>
+                                    <CardTitle className="text-black text-[30px]">
+                                        Core Value 3
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-[20px]">
+                                        Description of Core Value 3
                                     </p>
-                                </div>
-                            </div>
-                            <div className="bg-gradient-to-tr from-sky-400 to-sky-200 max-w-[400px] h-[450px] pt-10 px-10 py-6 shadow-lg rounded-2xl border-solid border-4  border-sky-500  transform transition duration-500 hover:scale-110">
-                                <div className="text-left text-[30px] uppercase px-5 pb-3 font-bold">
-                                    Integrity
-                                </div>
-                                <div className="tracking-light">
-                                    <p className="text-left text-[20px] px-5 line-clamp-5 ">
-                                        We conduct ourselves with honesty,
-                                        transparency, and ethical behavior in
-                                        everything we do.
+                                </CardContent>
+                                <CardContent className="w-full flex justify-center pt-5">
+                                    <Image
+                                        src={IntegritySvg}
+                                        width={250}
+                                        height={250}
+                                        alt="Integrity"
+                                    />
+                                </CardContent>
+                            </Card>
+                            <Card className=" bg-gradient-to-br from-[#7B9FF2] to-[#4259C3] border-black shadow-lg rounded-[15px]">
+                                <CardHeader>
+                                    <CardTitle className="text-black text-[30px]">
+                                        Core Value 3
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-[20px]">
+                                        Description of Core Value 3
                                     </p>
-                                </div>
-                            </div>
+                                </CardContent>
+                                <CardContent className="w-full flex justify-center pt-5">
+                                    <Image
+                                        src={IntegritySvg}
+                                        width={250}
+                                        height={250}
+                                        alt="Integrity"
+                                    />
+                                </CardContent>
+                            </Card>
                         </div>
                     </div>
                 </div>
