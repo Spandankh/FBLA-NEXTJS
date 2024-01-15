@@ -1,11 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
+
 import moment from 'moment-timezone'
-import RandomImage from '../../public/images/GymTrainer.png'
+import AboutUsJpg from '../../public/images/fitness-gym-friend-having-fun-with-gym-team-work-togetherness-concept_124865-17774.avif'
+import JoinUsPng from '../../public/images/benefits.jpg'
+
 import heroimage from '../../public/images/gym.jpg'
 import { getJobs } from '@/lib/jobs'
 import { ListReveal } from '@/components/Reveal'
 import BenefitCard from '@/components/landing/BenefitCard'
+import { Button } from '@/components/ui/button'
 
 export default async function Home() {
     const res = await getJobs()
@@ -24,20 +28,21 @@ export default async function Home() {
                             className="brightness-50"
                             style={{ objectFit: 'cover' }}
                         />
-                        <div className="text-white font-anton">
-                            <div className="relative h-[50vh] md:text-center flex flex-col justify-center mt-10 my-20">
-                                <h1 className="text-[50px] md:text-[100px] font-bold md:py-6 ">
-                                    TEXT TEXT TEXT TEXT
-                                    <span className="text-blue-600"> TEXT</span>
-                                    <div className="flex justify-center">
-                                        <Link
-                                            href="/career"
-                                            className="inline-block text-[20px] bg-blue-500 text-white font-style: normal py-5 px-5 max-w-[230px] max-h-auto uppercase rounded-[2rem] "
-                                        >
-                                            EXPLORE CAREERS
-                                        </Link>
-                                    </div>
+                        <div className="text-white relative">
+                            <div className="flex flex-col justify-center items-center mt-10 my-20 text-[50px] md:text-[100px]">
+                                <h1 className="font-bold">Transform Lives</h1>
+                                <h1 className="font-bold">AND</h1>
+                                <h1 className="text-blue-500 font-bold text-left">
+                                    Shape Futures
                                 </h1>
+                                <Button
+                                    asChild
+                                    className="flex justify-center text-[20px] bg-blue-500 text-white p-7 uppercase rounded-[25px] hover:bg-blue-700"
+                                >
+                                    <Link href="/career" className="">
+                                        Join Our Team
+                                    </Link>
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -47,23 +52,24 @@ export default async function Home() {
                         <div className="md:flex-row-reverse	flex-col items-center flex justify-center pb-10 md:pt-10">
                             <div className="p-5 justify-center md:w-1/3">
                                 <div className="bg-gradient-to-r from-blue-800 to-green-300 bg-clip-text text-transparent text-4xl md:text-6xl  font-bold pb-10">
-                                    RANDOM TEXTRANDOM TEXTRANDOM TEXTRANDOM
+                                    About Us
                                 </div>
-                                <div className="text-2xl mb-8">
-                                    RANDOM TEXTRANDOM TEXTRANDOM TEXTRANDOM
-                                    TEXTRANDOM TEXTRANDOM TEXT RANDOM TEXTRANDOM
-                                    TEXTRANDOM TEXTRANDOM TEXT
+                                <div className="text-[30px] mb-8 font-sans tracking-[0.020rem]">
+                                    We are a passionate group of fitness
+                                    trainers dedicated to helping people stay
+                                    fit. Explore our rich history in helping
+                                    people stay fit.
                                 </div>
                                 <Link
                                     href="/mission"
-                                    className="bg-blue-500 text-white p-4 justify-center flex md:w-1/3 rounded-[1rem] hover:bg-blue-600"
+                                    className="bg-blue-500 text-white p-4 justify-center flex md:w-1/3 text-lg rounded-[1rem] hover:bg-blue-600"
                                 >
-                                    Learn More About Us
+                                    Learn More
                                 </Link>
                             </div>
 
                             <Image
-                                src={RandomImage}
+                                src={AboutUsJpg}
                                 alt="Picture of the author"
                                 width={500}
                                 height={500}
@@ -78,23 +84,29 @@ export default async function Home() {
                         <div className="md:flex-row flex-col items-center flex  justify-center pb-10">
                             <div className="p-5 justify-center md:w-1/3">
                                 <div className="bg-gradient-to-r from-blue-800 to-green-300 bg-clip-text text-transparent text-4xl md:text-6xl  font-bold pb-10">
-                                    RANDOM TEXTRANDOM TEXTRANDOM TEXTRANDOM
+                                    Join us at Wario
                                 </div>
-                                <div className="text-2xl mb-8">
-                                    RANDOM TEXTRANDOM TEXTRANDOM TEXTRANDOM
-                                    TEXTRANDOM TEXTRANDOM TEXT RANDOM TEXTRANDOM
-                                    TEXTRANDOM TEXTRANDOM TEXT
+                                <div className="text-[30px] mb-8 font-sans md:tracking-[0.020rem] max-w-prose">
+                                    At Wario, we're more than just a workplace —
+                                    we're a family. We are commited to a
+                                    supportive and collaborative environment
+                                    extends to every member of our team. When
+                                    you join us, you'll enjoy a range of
+                                    benefits.
                                 </div>
-                                <Link
-                                    href="/career"
-                                    className="bg-blue-500 text-white p-4 justify-center flex md:w-1/3 rounded-[1rem] hover:bg-blue-600"
-                                >
-                                    Get Started
-                                </Link>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <Link
+                                        scroll={false}
+                                        href="/career"
+                                        className="bg-blue-500 text-white p-4 justify-center flex rounded-[1rem] hover:bg-blue-600"
+                                    >
+                                        Explore Jobs
+                                    </Link>
+                                </div>
                             </div>
 
                             <Image
-                                src={RandomImage}
+                                src={JoinUsPng}
                                 alt="Picture of the author"
                                 placeholder="blur"
                                 width={500}
@@ -104,7 +116,7 @@ export default async function Home() {
                         </div>
                     </div>
                 </ListReveal>
-                <section className="">
+                <section id="#benefits">
                     <ListReveal>
                         <div className="text-center ">
                             <h1 className="text-[2rem] sm:text-[4rem] md:text-[3.5rem]">

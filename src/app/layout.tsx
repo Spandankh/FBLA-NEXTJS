@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import NavBar from '../components/NavBar'
 import { Toaster } from '@/components/ui/sonner'
+import Footer from '@/components/Footer'
 
 const inter = Poppins({
     subsets: ['latin'],
@@ -24,7 +25,7 @@ export default function RootLayout({
             <body>
                 <NavBar />
                 <main>{children}</main>
-
+                <Footer />
                 <Toaster closeButton className="bg-black" />
             </body>
         </html>
