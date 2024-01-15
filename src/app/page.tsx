@@ -87,12 +87,12 @@ export default async function Home() {
                                     Join us at Wario
                                 </div>
                                 <div className="text-[30px] mb-8 font-sans md:tracking-[0.020rem] max-w-prose">
-                                    At Wario, we're more than just a workplace —
-                                    we're a family. We are commited to a
-                                    supportive and collaborative environment
-                                    extends to every member of our team. When
-                                    you join us, you'll enjoy a range of
-                                    benefits.
+                                    At Wario, we&apos;re more than just a
+                                    workplace — we&apos;re a family. We are
+                                    commited to a supportive and collaborative
+                                    environment extends to every member of our
+                                    team. When you join us, you&apos;ll enjoy a
+                                    range of benefits.
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <Link
