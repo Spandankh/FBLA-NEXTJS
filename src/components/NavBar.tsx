@@ -17,7 +17,7 @@ const NavBar = () => {
                 <Link className="p-4" href="/">
                     Home
                 </Link>
-                <Link className="p-4" href="/mission">
+                <Link className="p-4" href="/about">
                     About
                 </Link>
                 <Link className="p-4" href="/career">
@@ -54,13 +54,13 @@ const NavBar = () => {
                         <Link href="/home">HOME</Link>
                     </li>
                     <li className="p-4 border-b border-gray-600 ">
-                        <Link href="/mission"> About Us</Link>
+                        <Link href="/about"> About Us</Link>
                     </li>
                     <li className="p-4 border-b border-gray-600">
                         <Link href="/career">CAREERS</Link>
                     </li>
                     <li className="p-4 border-b border-gray-600">
-                        <Link href="/contract">CONTRACT</Link>
+                        <Link href="/dashboard">dashboard</Link>
                     </li>
                     <li className="p-4 border-b border-gray-600"> Settings</li>
                 </ul>
