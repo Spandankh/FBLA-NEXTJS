@@ -44,8 +44,7 @@ export default async function Mission() {
                                 About Wario
                             </h1>
                             <p className="md:text-[24px] text-white font-semibold tracking-light ">
-                                RANDOM TEXTRANDOM TEXTRANDOM TEXTRANDOM
-                                TEXTRANDOM
+                                Explore our rich history!
                             </p>
                             <Link
                                 href="/career"

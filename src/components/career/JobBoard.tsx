@@ -4,6 +4,7 @@ import Image from 'next/image'
 import CareerLanding from '../../../public/images/CareerLandingHero.jpg'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+export const dynamic = 'force-dynamic'
 
 export default async function JobBoard() {
     const res = await getJobs()

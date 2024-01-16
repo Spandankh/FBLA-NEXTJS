@@ -37,7 +37,6 @@ export default function History() {
                 <h1 className="text-[#19224a]  text-5xl font-bold p-5">
                     Where We Came From
                 </h1>
-                <p className="text-2xl">Some more Random Text Woooo!</p>
             </div>
 
             <div className="container flex justify-center items-center bg-white rounded-[2rem] shadow-2xl my-4 mx-auto">
