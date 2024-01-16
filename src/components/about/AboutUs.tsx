@@ -7,17 +7,16 @@ export default function AboutUs() {
                         Who we are
                     </h1>
                     <p className="mb-16 text-[24px] leading-8	">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Consequatur rem eligendi tempore quisquam vitae autem
-                        ipsa doloribus minima amet, nemo dolore ipsum,
-                        accusantium repellat soluta dolor deleniti mollitia aut
-                        delectus!
+                        Wario is a company formed by bunch of personal trainers
+                        in hopes of helping people stay healthly and live a
+                        happy life. Since day 1, customer happines has been our
+                        top priority and we have maintained a 4.9 star rating
+                        for more then 4+ years.
                     </p>
                     <p className="pb-2 text-[24px] leading-8">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Eaque saepe expedita iure vitae ipsum et, quae
-                        unde magni id error ab, in exercitationem, rerum dolor
-                        nam iusto vel. Nam, dignissimos.
+                        At Wario, we also believe that you, the worker, deserve
+                        the best treatment that why since day 1 we have provided
+                        unmatched benefit and pay to all our employees
                     </p>
                 </div>
 

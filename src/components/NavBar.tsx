@@ -11,7 +11,7 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="fixed left-0 top-0 w-full z-10 bg-[#171717] border-white-1 mx-auto h-auto   flex items-center justify-between text-[#f2f2f2] font-equinox-sans">
+        <nav className="left-0 top-0 w-full z-30 bg-[#171717] border-white-1 mx-auto h-auto   flex items-center justify-between text-[#f2f2f2] font-equinox-sans">
             <h1 className="w-full text-3xl font-bold px-4">WARIO</h1>
             <ul className="hidden md:flex mr-auto  uppercase">
                 <Link className="p-4" href="/">

@@ -61,7 +61,7 @@ export default async function Home() {
                                     people stay fit.
                                 </div>
                                 <Link
-                                    href="/mission"
+                                    href="/about"
                                     className="bg-blue-500 text-white p-4 justify-center flex md:w-1/3 text-lg rounded-[1rem] hover:bg-blue-600"
                                 >
                                     Learn More
@@ -143,7 +143,7 @@ export default async function Home() {
                                     What Are You Waiting For?
                                 </h1>
                                 <h1 className="pb-15 text-md tracking-tight text-gray-900 sm:text-6xl text-center">
-                                    Current Job
+                                    Current Job{' '}
                                     <span className="text-blue-600">
                                         Openings
                                     </span>
@@ -169,7 +169,7 @@ export default async function Home() {
                                                 key={index}
                                                 className=" flex justify-center overflow-hidden"
                                             >
-                                                <li className="w-[700px] h-auto shadow-lg  flex flex-col p-4 mx-2 my-4 hover:scale-105 rounded-2xl duration-300 bg-white">
+                                                <li className="w-[700px] h-auto shadow-xl border  flex flex-col p-4 mx-2 my-4 hover:scale-105 rounded-2xl duration-300 bg-white">
                                                     <Link
                                                         href={`/career/job/${item.id}`}
                                                     >

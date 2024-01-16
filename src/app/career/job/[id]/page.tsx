@@ -1,14 +1,13 @@
 import Image from 'next/image'
 import { getSingleJob } from '@/lib/jobs'
 import Link from 'next/link'
-import { ListReveal } from '@/components/Reveal'
 import Apply from '../../apply'
+import { ChevronLeft } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import jobDescription from '@/components/career/JobDescr'
 import BenefitSvg from '../../../../../public/images/undraw_personal_trainer_re_cnua.svg'
 import CoreValueSvg from '../../../../../public/images/fitness-outline-99e3e.svg'
-
 import { Button } from '@/components/ui/button'
 
 export default async function Career({ params }: { params: { id: string } }) {
@@ -25,7 +24,14 @@ export default async function Career({ params }: { params: { id: string } }) {
     return (
         <div className="bg-gradient-to-br from-[#faf0e6bf] to-[#e6f0fabf] min-h-screen min-w-screen">
             <div className="max-w-[1240px] mx-auto">
-                <section className="pt-5 md:pt-10 flex flex-col justify-center">
+                <Link href="/career" className="flex pt-2">
+                    <ChevronLeft className=" "></ChevronLeft>
+                    <p className="text-blue-800 font-bold flex">
+                        Back to careers
+                    </p>
+                </Link>
+
+                <section className="pt-3 md:pt-5 flex flex-col justify-center">
                     <h1 className="text-[48px] font-bold capitalize">
                         {res?.jobName}
                     </h1>
@@ -73,39 +79,14 @@ export default async function Career({ params }: { params: { id: string } }) {
                             </TabsContent>
                         </div>
                         <div className="max-w-[400px] min-w-[350px] mx-auto">
-                            <div className="bg-gradient-to-br from-[#4b57db] from-10% to-[#2d91c6] p-5 rounded-xl mx-auto my-auto">
-                                <h1 className="text-[2rem] font-semibold text-white ">
-                                    Our Core Value
-                                </h1>
-                                <p className="text-[1rem]   text-white">
-                                    Random Random Random Random Random Random
-                                </p>
-                                <div className="flex justify-center">
-                                    <Image
-                                        src={BenefitSvg}
-                                        width={250}
-                                        height={250}
-                                        alt="Benefits"
-                                    />
-                                </div>
-                                <Button
-                                    asChild
-                                    className="flex justify-center bg-blue-400 text-white rounded-xl hover:bg-blue-700"
-                                >
-                                    <Link
-                                        href="/mission"
-                                        className="text-[2rem]"
-                                    >
-                                        Learn More About Us
-                                    </Link>
-                                </Button>
-                            </div>
                             <div className="bg-gradient-to-br from-[#4b57db] to-[#4383d2] p-5 rounded-xl mx-auto my-5">
                                 <h1 className="text-[2rem] font-semibold text-white ">
                                     Our Core Value
                                 </h1>
                                 <p className="text-[1rem] text-white">
-                                    Random Random Random Random Random Random
+                                    Innovation, Integrity & Collaboration are
+                                    the most important values at Wario that have
+                                    driven this company since day 1!
                                 </p>
                                 <div className="flex justify-center pt-2">
                                     <Image
@@ -119,10 +100,7 @@ export default async function Career({ params }: { params: { id: string } }) {
                                     asChild
                                     className="flex justify-center bg-blue-400 text-white rounded-xl hover:bg-blue-700"
                                 >
-                                    <Link
-                                        href="/mission"
-                                        className="text-[2rem]"
-                                    >
+                                    <Link href="/about" className="text-[2rem]">
                                         Learn More About Us
                                     </Link>
                                 </Button>

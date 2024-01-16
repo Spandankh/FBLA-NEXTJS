@@ -10,25 +10,25 @@ export default function History() {
             id: '1',
             data: '2019',
             title: 'We Started the Company',
-            body: 'More Random Text More Random Text More Random Text',
+            body: '5+ Personal Trainers came together and formed Wario, officaly starting its rich history.',
         },
         {
             id: '2',
             data: '2020',
-            title: 'Product Launch',
-            body: 'We introduced our latest product line to the market, showcasing innovative features that garnered attention from industry experts and customers alike.',
+            title: 'Growth',
+            body: 'We started expanding into new cities and officaly reached 50 employees.',
         },
         {
             id: '3',
             data: '2021',
-            title: 'Expansion into New Markets',
-            body: 'In this year, we expanded our operations into international markets, establishing strategic partnerships and reaching a broader customer base.',
+            title: 'Mobile App',
+            body: 'In this year, we created a mobile app that lets our customers track their fitness progress resulting into a broader customer base.',
         },
         {
             id: '4',
             data: '2022',
             title: 'Achieving Record Sales',
-            body: 'A remarkable year for us as we achieved record-breaking sales figures, attributing our success to our dedicated team and continuous innovation.',
+            body: 'In 2023 we achieved record-breaking sales resulting from our dedicated team and continuous innovation.',
         },
     ]
     return (
