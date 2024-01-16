@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import moment from 'moment-timezone'
-import AboutUsJpg from '../../public/images/fitness-gym-friend-having-fun-with-gym-team-work-togetherness-concept_124865-17774.avif'
+import AboutUsJpg from '../../public/images/fitness-gym-friend-having-fun-with-gym-team-work-togetherness-concept_124865-17774.jpg'
 import JoinUsPng from '../../public/images/benefits.jpg'
 
 import heroimage from '../../public/images/gym.jpg'
