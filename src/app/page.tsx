@@ -10,6 +10,7 @@ import { getJobs } from '@/lib/jobs'
 import { ListReveal } from '@/components/Reveal'
 import BenefitCard from '@/components/landing/BenefitCard'
 import { Button } from '@/components/ui/button'
+import parse from 'html-react-parser'
 
 export default async function Home() {
     const res = await getJobs()
@@ -17,19 +18,18 @@ export default async function Home() {
     return (
         <>
             <div className="bg-white h-full">
-                <section>
-                    <div className="relative h-[70vh] overflow-hidden">
+                <section className="flex items-center">
+                    <div className="relative overflow-hidden w-full">
                         <Image
                             alt=""
                             src={heroimage}
                             placeholder="blur"
                             quality={100}
                             fill
-                            className="brightness-50"
-                            style={{ objectFit: 'cover' }}
+                            className="brightness-50 object-cover w-full h-full"
                         />
                         <div className="text-white relative">
-                            <div className="flex flex-col justify-center items-center mt-10 my-20 text-[50px] md:text-[100px]">
+                            <div className="flex flex-col justify-center text-center items-center mt-10 my-20 text-[50px] md:text-[100px]">
                                 <h1 className="font-bold">Transform Lives</h1>
                                 <h1 className="font-bold">AND</h1>
                                 <h1 className="text-blue-500 font-bold text-left">
@@ -194,11 +194,11 @@ export default async function Home() {
                                                                 )}
                                                         </div>
                                                         <div className="tracking-light">
-                                                            <p className="text-left py-2 line-clamp-3">
-                                                                {
+                                                            <div className="text-left py-2 line-clamp-3">
+                                                                {parse(
                                                                     item.jobDescription
-                                                                }
-                                                            </p>
+                                                                )}
+                                                            </div>
                                                         </div>
                                                     </Link>
                                                 </li>
