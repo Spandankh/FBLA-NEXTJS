@@ -6,14 +6,23 @@ export type Job = {
     fullTime: boolean
     jobLocation: string | null
 };
-
 export type Application = {
-    id: string
-    firstName: string
-    lastName: string
-    jobName: string
-    emailAdress: string
-    answer: string
-    jobId: string
-    resume: string
+    id: string;
+    jobId: string;
+    jobName: string;
+    firstName: string;
+    lastName: string;
+    emailAdress: string;
+    resume: string | null;
+    question: string[];
+    questionAnswer: string[];
+};
+export type JobFormValue = {
+    id?: string
+    JobName: string | ''
+    JobDescription: string | ''
+    JobLocation: string | ''
+    FullTime: boolean | false
+    RequireResume: boolean | true
+    questions: { question: string }[] | []
 }

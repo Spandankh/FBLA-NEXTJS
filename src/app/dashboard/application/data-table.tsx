@@ -29,7 +29,7 @@ export function DataTable<TData, TValue>({
         data,
         columns,
         state: {
-            columnVisibility: { id: false, jobId: false },
+            columnVisibility: { id: false, jobId: false, question: false },
         },
         getCoreRowModel: getCoreRowModel(),
     })

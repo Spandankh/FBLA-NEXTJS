@@ -1,31 +1,28 @@
+'use server'
+
 import { newApplication } from '@/lib/application'
-import { toast } from 'sonner'
-import JSConfetti from 'js-confetti'
 
 const handleSubmit = async (data: any) => {
     try {
+        // console.log(`
+        //     jobid: ${data.jobId},
+        //     jobName: ${data.jobName},
+        //     firstName: ${data.firstName},
+        //     lastName: ${data.lastName},
+        //     email: ${data.emailAdress},
+        //     answers ${data.Answers.map((answer: any) => answer.answers)}`)
         await newApplication(
-            data.FirstName,
-            data.LastName,
-            data.emailAdress,
-            data.Answer,
             data.jobId,
             data.jobName,
-            data.resume
+            data.firstName,
+            data.lastName,
+            data.emailAdress,
+            data.resume,
+            data.question,
+            data.Answers.map((answer: any) => answer.answers)
         )
-        const jsConfetti = new JSConfetti()
-        jsConfetti.addConfetti({
-            confettiNumber: 500,
-        })
-
-        return toast('Job successful submitted', {
-            description: `Name: ${data.FirstName} ${data.LastName}`,
-        })
     } catch (error) {
         console.error('Error submitting application:', error)
-        return toast('Error while submitting try again', {
-            description: `${error}`,
-        })
     }
 }
 

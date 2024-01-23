@@ -1,13 +1,18 @@
+'use'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
     Book,
+    ChevronRight,
     Contact2,
     FilePlus2,
     LayoutDashboard,
     MonitorCheck,
 } from 'lucide-react'
+import { useState } from 'react'
+import { Button } from '../ui/button'
+import { ScrollArea } from '../ui/scroll-area'
 
 const navItems = [
     {
@@ -46,41 +51,58 @@ export default function Sidebar({
     className,
 }: React.HTMLAttributes<HTMLDivElement>) {
     const path = usePathname()
+    const [isOpen, setIsOpen] = useState(true)
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen)
+        console.log(isOpen)
+    }
 
     return (
-        <div className="p-6 w-1/2 h-screen bg-white top-0 md:w-60 border-r border-black">
-            <div className="">
-                <h1 className="text-center text-[20px] font-bold border-b mb-2">
-                    Dashboard
-                </h1>
-                <div className="flex flex-col justify-start item-center">
-                    <nav className="my-4 border-b border-gray-100 pb-">
-                        {navItems.map((item, index) => {
-                            return (
-                                item.href && (
-                                    <Link key={index} href={item.href}>
-                                        <li
-                                            className={cn(
-                                                'relative flex items-center py-2 px-3 my-1 font-medium cursor-pointer transition-colors rounded-[1rem] mb-5',
-                                                path === item.href
-                                                    ? 'bg-gradient-to-tr from-gray-200 via-gray-300 to-gray-400 text-gray-800'
-                                                    : ' hover:bg-gray-800 hover:text-white'
-                                            )}
-                                        >
-                                            <div className=" flex justify-start">
-                                                <item.icon className="mx-5" />
-                                                <h3 className="text-base font-semibold  ">
-                                                    {item.title}
-                                                </h3>
-                                            </div>
-                                        </li>
-                                    </Link>
-                                )
-                            )
-                        })}
-                    </nav>
+        <div className={cn(' relative pb-12 bg-white border', className)}>
+            <div
+                className={
+                    isOpen
+                        ? 'space-y-4 py-4 max-w-[150px] md:flex ease-in-out duration-500'
+                        : 'max-w-[75px] md:max-w-[100px] ease-in-out duration-500'
+                }
+            >
+                <div className="py-2">
+                    <div className="space-y-8 p-2">
+                        {navItems?.map((nav, index) => (
+                            <Button
+                                asChild
+                                key={index}
+                                className={cn(
+                                    'w-full justify-start font-normal  rounded-[1rem]',
+                                    path === nav.href
+                                        ? 'bg-slate-300 font-bold'
+                                        : ' hover:bg-slate-400'
+                                )}
+                            >
+                                <Link href={nav.href}>
+                                    <nav.icon />
+                                    <div
+                                        className={
+                                            isOpen
+                                                ? 'ease-in-out duration-500'
+                                                : 'hidden ease-in-out duration-500'
+                                        }
+                                    >
+                                        {nav.title}
+                                    </div>
+                                </Link>
+                            </Button>
+                        ))}
+                    </div>
                 </div>
             </div>
+            <Button
+                asChild
+                onClick={toggleSidebar}
+                className="absolute -right-4 bg-blue-500 rounded-full p-2 w-auto h-auto text-white hover:bg-blue-800"
+            >
+                <ChevronRight className=" " />
+            </Button>
         </div>
     )
 }

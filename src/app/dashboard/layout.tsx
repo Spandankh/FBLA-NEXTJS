@@ -1,6 +1,7 @@
 'use client'
 import React, { ReactNode } from 'react'
 import Sidebar from '@/components/dashboard/sidebar'
+import { Toaster } from '@/components/ui/sonner'
 
 interface Props {
     children?: ReactNode
@@ -8,12 +9,11 @@ interface Props {
 const UserNavBar = ({ children }: Props) => {
     return (
         <>
-            <div className="flex h-screen overflow-hidden">
-                <Sidebar className="" />
-                <main className="flex-1 overflow-x-hidden overflow-y-auto ">
-                    {children}
-                </main>
-            </div>
+            <main className="flex bg-slate-100">
+                <Sidebar />
+                {children}
+                <Toaster closeButton className="bg-black" />
+            </main>
         </>
     )
 }

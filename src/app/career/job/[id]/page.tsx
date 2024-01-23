@@ -6,7 +6,6 @@ import { ChevronLeft } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import jobDescription from '@/components/career/JobDescr'
-import BenefitSvg from '../../../../../public/images/undraw_personal_trainer_re_cnua.svg'
 import CoreValueSvg from '../../../../../public/images/fitness-outline-99e3e.svg'
 import { Button } from '@/components/ui/button'
 
@@ -72,8 +71,9 @@ export default async function Career({ params }: { params: { id: string } }) {
                             <TabsContent value="Application" className="grow">
                                 <div className="mx-5 my-5">
                                     <Apply
-                                        jobId={params.id}
+                                        jobId={res!.id}
                                         jobName={res!.jobName}
+                                        questions={res?.questions || []}
                                     ></Apply>
                                 </div>
                             </TabsContent>

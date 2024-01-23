@@ -17,7 +17,10 @@ export default async function JobBoard() {
                         id: string
                         jobName: string
                         jobDescription: string
+                        jobLocation: string
                         fullTime: boolean
+                        requireResume: boolean
+                        questions: { question: string }[]
                     }) => (
                         <div key={item.id} className="">
                             <div className="border shadow-xl p-4 md:p-6 rounded-2xl transform transition duration-500 hover:scale-110">

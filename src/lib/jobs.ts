@@ -1,20 +1,48 @@
 import prisma from "@/lib/db"
 
-const newJob = async (jobName: string, jobDescription: string,) => {
+const newJob = async (jobName: string, jobDescription: string, jobLocation: string | null, fullTime: boolean, requireResume: boolean, questions: string[]
+) => {
 
     try {
         await prisma.post.create({
             data: {
                 jobName,
-                jobDescription
+                jobDescription,
+                jobLocation,
+                fullTime,
+                requireResume,
+                questions
             }
         })
     } catch (e) {
         return "Something went wrong!"
     }
 
-    return ("Created new application")
+    return ("Created new job")
 }
+
+const updateJob = async (id: string, jobName: string, jobDescription: string, jobLocation: string | null, fullTime: boolean, requireResume: boolean, questions: string[]
+) => {
+
+    try {
+        await prisma.post.update({
+            where: { id: id },
+            data: {
+                jobName,
+                jobDescription,
+                jobLocation,
+                fullTime,
+                requireResume,
+                questions
+            },
+        })
+    } catch (e) {
+        return "Something went wrong!"
+    }
+
+    return ("Created new job")
+}
+
 
 const getJobs = async () => {
     const job = await prisma.post.findMany();
@@ -35,4 +63,4 @@ const deleteSingleJob = async (id: string) => {
     }
 };
 
-export { getSingleJob, getJobs, newJob, deleteSingleJob }
+export { getSingleJob, getJobs, newJob, deleteSingleJob, updateJob }

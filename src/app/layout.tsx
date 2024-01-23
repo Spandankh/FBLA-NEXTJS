@@ -24,7 +24,7 @@ export default function RootLayout({
         <html lang="en" className={inter.className}>
             <body>
                 <NavBar />
-                <main>{children}</main>
+                <main className="flex-1">{children}</main>
                 <Footer />
                 <Toaster closeButton className="bg-black" />
             </body>

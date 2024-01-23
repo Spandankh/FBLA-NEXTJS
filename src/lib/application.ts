@@ -1,21 +1,25 @@
 'use server'
 
 import prisma from "@/lib/db"
+const newApplication = async (jobId: string, jobName: string, firstName: string, lastName: string, emailAdress: string, resume: string, question: string[], questionAnswer: string[]) => {
+    try {
+        const newApplication = await prisma.application.create({
+            data: {
+                jobId,
+                jobName,
+                firstName,
+                lastName,
+                emailAdress,
+                resume,
+                question,
+                questionAnswer
+            }
+        })
+    } catch (e) {
+        return ("Something went wrong!" + e)
+    }
 
-const newApplication = async (firstName: string, lastName: string, emailAdress: string, answer: string, jobId: string, jobName: string, resume: string) => {
-    const newApplication = await prisma.application.create({
-        data: {
-            firstName,
-            lastName,
-            emailAdress,
-            answer,
-            jobId,
-            jobName,
-            resume
-        }
-    })
-
-    return JSON.stringify(newApplication)
+    return newApplication
 }
 
 const getApplication = async () => {

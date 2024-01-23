@@ -16,17 +16,20 @@ model Post {
   jobLocation String?
   jobDescription String 
   fullTime Boolean @default(true)
+  requireResume Boolean @default(true)
+  questions String[]
 }
 
 model Application {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  firstName String
+  jobId String
   jobName String
+  firstName String
   lastName String
   emailAdress String  @unique
-  answer String
-  resume String
-  jobId String 
+  resume String?
+  question String[]
+  questionAnswer String[]
 }
 
  

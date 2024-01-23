@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { deleteUser } from './helper'
 import Link from 'next/link'
 import { Document, Page } from 'react-pdf'
-
 import { useState } from 'react'
 import {
     Dialog,
@@ -20,6 +19,8 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog'
 import { title } from 'process'
+import { getSingleJob } from '@/lib/jobs'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 export const columns: ColumnDef<Application>[] = [
     {
@@ -57,23 +58,40 @@ export const columns: ColumnDef<Application>[] = [
         header: 'Email',
     },
     {
-        accessorKey: 'answer',
+        accessorKey: 'question',
+    },
+    {
+        accessorKey: 'questionAnswer',
         header: 'Answer',
         cell: function Cell({ row }) {
             const [showModal, setShowModal] = useState(false)
-
+            const answers = row.getValue('questionAnswer') as string[]
+            const question = row.getValue('question') as string[]
             return (
                 <>
                     <Dialog open={showModal} onOpenChange={setShowModal}>
-                        <DialogContent className="bg-white">
-                            <DialogHeader>
-                                <DialogTitle className="text-2xl">
-                                    Answer
-                                </DialogTitle>
-                                <DialogDescription className="text-1xl">
-                                    {row.getValue('answer')}
-                                </DialogDescription>
-                            </DialogHeader>
+                        <DialogContent className="bg-white max-w-prose">
+                            <ScrollArea className="max-h-[80vh] p-6">
+                                <DialogHeader>
+                                    <DialogTitle className="text-2xl">
+                                        Answer
+                                    </DialogTitle>
+                                    <DialogDescription className="text-1xl">
+                                        {answers.map((answer, answerIndex) => (
+                                            <div key={answerIndex}>
+                                                <div className="pb-3">
+                                                    <div className="font-sm font-bold">
+                                                        {question[answerIndex]}
+                                                    </div>
+                                                    <div className="max-w-prose border p-5 text-sm shadow-md">
+                                                        {answer}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </DialogDescription>
+                                </DialogHeader>
+                            </ScrollArea>
                         </DialogContent>
                     </Dialog>
                     <Button onClick={() => setShowModal(true)}>View</Button>

@@ -18,6 +18,8 @@ import {
 import { Input } from '@/components/ui/input'
 import createApplication from './createApplication'
 import { ChangeEvent, useState } from 'react'
+import { toast } from 'sonner'
+import JSConfetti from 'js-confetti'
 
 const formSchema = z.object({
     FirstName: z.string().min(2, {
@@ -30,9 +32,13 @@ const formSchema = z.object({
         .string()
         .min(1, { message: 'Email is required!' })
         .email({ message: 'Must be a valid email!' }), // Corrected field name and validation
-    Answer: z.string().min(2, {
-        message: 'Answer must be at least 2 words!',
-    }),
+    Answers: z.array(
+        z.object({
+            answers: z.string().min(1, {
+                message: 'Please fill out the answers to best of your ability!',
+            }),
+        })
+    ),
     resume: z
         .any()
         .refine((file) => !!file, { message: 'Resume file is required.' })
@@ -47,29 +53,49 @@ const formSchema = z.object({
 interface ApplyFormProps {
     jobId: string
     jobName: string
+    questions: string[]
 }
 
-export default function ApplyForm({ jobId, jobName }: ApplyFormProps) {
+export default function ApplyForm({
+    jobId,
+    jobName,
+    questions,
+}: ApplyFormProps) {
     const [resumeBase64, setResumeBase64] = useState<string>('')
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            FirstName: '',
-            LastName: '',
-            emailAdress: '',
-            Answer: '',
+            FirstName: 'testName',
+            LastName: 'lastNametest',
+            Answers: questions.map(() => ({ answers: 'testAnswer' })),
+            emailAdress: 'testEmail@gmail.com',
         },
     })
-    const handleSumbit = async (data: any) => {
-        const formDataWithJobId = {
-            ...data,
-            jobId: jobId,
-            jobName: jobName,
-            resume: resumeBase64,
+    const handleSumbit = async (data: z.infer<typeof formSchema>) => {
+        try {
+            const formDataWithJobId = {
+                jobId: jobId,
+                firstName: data.FirstName,
+                jobName: jobName,
+                lastName: data.LastName,
+                emailAdress: data.emailAdress,
+                resume: resumeBase64,
+                question: questions,
+                Answers: data.Answers,
+            }
+            await createApplication(formDataWithJobId)
+            toast('Successfully summited application!')
+            const jsConfetti = new JSConfetti()
+            jsConfetti.addConfetti({
+                confettiNumber: 500,
+            })
+        } catch (error) {
+            toast(
+                'Got a error while submitting! Please try agian later ' + error
+            )
         }
-        return await createApplication(formDataWithJobId)
     }
+
     function handleResumeChange(e: ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0]
         if (file) {
@@ -155,28 +181,34 @@ export default function ApplyForm({ jobId, jobName }: ApplyFormProps) {
                                 )
                             }}
                         ></FormField>
-                        <FormField
-                            control={form.control}
-                            name="Answer"
-                            render={({ field }) => {
-                                return (
-                                    <FormItem>
-                                        <FormLabel className="text-lg">
-                                            Info
-                                        </FormLabel>
-                                        <FormControl>
-                                            <Textarea
-                                                className="mx-auto my-auto rounded-[5px]"
-                                                placeholder="Tell us a little bit about yourself"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage className="text-red-500" />
-                                    </FormItem>
-                                )
-                            }}
-                        ></FormField>
+                        <div>
+                            {questions.map((question, index) => (
+                                <FormField
+                                    key={index}
+                                    control={form.control}
+                                    name={`Answers.${index}.answers`}
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className="text-lg">
+                                                {question}
+                                                <span className="text-red-500">
+                                                    *
+                                                </span>
+                                            </FormLabel>
+                                            <FormControl>
+                                                <Textarea
+                                                    className="rounded-[5px]"
+                                                    placeholder="Enter Answer"
+                                                    {...field}
+                                                />
+                                            </FormControl>
 
+                                            <FormMessage className="text-red-500" />
+                                        </FormItem>
+                                    )}
+                                />
+                            ))}
+                        </div>
                         <FormField
                             control={form.control}
                             name="resume"
@@ -191,10 +223,10 @@ export default function ApplyForm({ jobId, jobName }: ApplyFormProps) {
                                                 type="file"
                                                 className="rounded-[5px]"
                                                 accept=".pdf"
-                                                // converts to base64 so we can store it in our database
                                                 onChange={(e) => {
                                                     field.onChange(
-                                                        e.target.files![0]
+                                                        e.currentTarget
+                                                            .files![0]
                                                     )
                                                     handleResumeChange(e)
                                                 }}

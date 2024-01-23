@@ -3,23 +3,18 @@ import { useEditor, EditorContent, type Editor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { Bold, Strikethrough, Italic, List, ListOrdered } from 'lucide-react'
 import { Toggle } from '@/components/ui/toggle'
-import { Separator } from '@/components/ui/separator'
-import { useState } from 'react'
-import RichTextPreview from './jobContentPreview'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-import { newJob } from '@/lib/jobs'
-import handleSubmit from './handleSumbit'
 
-const RichTextEditor = () => {
-    const [jobContent, setJobContent] = useState('')
-    const [jobName, setName] = useState('')
+interface JobContent {
+    onEditorChange: (content: string) => void
+    intialEditorText: string
+}
 
+const RichTextEditor = ({ onEditorChange, intialEditorText }: JobContent) => {
     const editor = useEditor({
+        content: intialEditorText || '<p></p>',
         editorProps: {
             attributes: {
-                class: 'min-h-[150px] max-h-[300px] w-full  border border-input bg-transparent px-3 py-2 text-sm focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 overflow-auto',
+                class: 'min-h-[150px] max-h-[300px] w-full  border border-black rounded-b-[10px] bg-transparent px-3 py-2 text-sm focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 overflow-auto',
             },
         },
         extensions: [
@@ -36,46 +31,20 @@ const RichTextEditor = () => {
                 },
             }),
         ],
-        content: '',
         onUpdate({ editor }) {
-            setJobContent(editor.getHTML())
+            const content = editor.getHTML().trim()
+
+            const sanitizedContent = content === '<p></p>' ? '' : content
+
+            onEditorChange(sanitizedContent)
         },
     })
 
     return (
         <>
-            <div className="flex flex-grow bg-gray-100 w-full min-h-screen">
-                <form
-                    className="flex-1 my-10 mx-10"
-                    action={() => handleSubmit(jobName, jobContent)}
-                >
-                    <div className="text-2xl font-bold">Job Editor</div>
-
-                    <div className="my-5">
-                        <Label className=" text-md py-5">Job Name</Label>
-                        <Input
-                            required={true}
-                            className="px-5"
-                            onChange={(e) => setName(e.target.value)}
-                        ></Input>
-                    </div>
-                    <div>
-                        <h1 className="text-md py-2">Job Description</h1>
-                        {editor ? (
-                            <RichTextEditorToolbar editor={editor} />
-                        ) : null}
-                        <EditorContent editor={editor} />
-                        <div className="my-5">
-                            <Button className="bg-blue-500 text-white mx-auto rounded-[1rem] hover:bg-blue-600">
-                                Sumbit
-                            </Button>
-                        </div>
-                    </div>
-                </form>
-
-                <div className="flex-1">
-                    <RichTextPreview jobBody={jobContent} jobName={jobName} />
-                </div>
+            <div className="">
+                {editor ? <RichTextEditorToolbar editor={editor} /> : null}
+                <EditorContent editor={editor} />
             </div>
         </>
     )
@@ -83,7 +52,7 @@ const RichTextEditor = () => {
 
 const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
     return (
-        <div className="border border-input bg-transparent rounded-br-md rounded-bl-md p-1 flex flex-row items-center gap-1">
+        <div className="border border-input bg-transparent rounded-t-[5px] flex flex-row flex-wrap items-center gap-0">
             <Toggle
                 size="sm"
                 pressed={editor.isActive('bold')}
@@ -123,7 +92,6 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
                     }`}
                 />
             </Toggle>
-            <Separator orientation="vertical" className="w-[1px] h-8" />
             <Toggle
                 size="sm"
                 pressed={editor.isActive('bulletList')}
@@ -158,7 +126,4 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
     )
 }
 
-const FullRichText = () => {
-    return <RichTextEditor></RichTextEditor>
-}
-export default FullRichText
+export default RichTextEditor
