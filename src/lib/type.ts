@@ -18,7 +18,7 @@ export type Application = {
     questionAnswer: string[];
 };
 export type JobFormValue = {
-    id?: string
+    id?: string | null
     JobName: string | ''
     JobDescription: string | ''
     JobLocation: string | ''

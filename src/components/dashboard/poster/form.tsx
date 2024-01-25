@@ -68,7 +68,7 @@ export default function CreateJob({
     })
     const [editMode, setEditMode] = useState(false)
     useEffect(() => {
-        if (id !== null) {
+        if (id !== undefined && id !== null) {
             setEditMode(true)
         } else {
             setEditMode(false)
@@ -88,7 +88,7 @@ export default function CreateJob({
                     questions: data.questions,
                 },
                 editMode
-            ).then(() => toast('Posted!'))
+            ).then(() => console.log(editMode, id))
         } catch (error) {
             console.error('Error submitting form:', error)
         }
