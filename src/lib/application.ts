@@ -1,7 +1,16 @@
 'use server'
 
-import prisma from "@/lib/db"
-const newApplication = async (jobId: string, jobName: string, firstName: string, lastName: string, emailAdress: string, resume: string, question: string[], questionAnswer: string[]) => {
+import prisma from '@/lib/db'
+const newApplication = async (
+    jobId: string,
+    jobName: string,
+    firstName: string,
+    lastName: string,
+    emailAdress: string,
+    resume: string,
+    question: string[],
+    questionAnswer: string[]
+) => {
     try {
         const newApplication = await prisma.application.create({
             data: {
@@ -16,29 +25,38 @@ const newApplication = async (jobId: string, jobName: string, firstName: string,
             }
         })
     } catch (e) {
-        return ("Something went wrong!" + e)
+        return 'Something went wrong!' + e
     }
 
     return newApplication
 }
 
 const getApplication = async () => {
-    const application = await prisma.application.findMany();
+    const application = await prisma.application.findMany()
     return application
 }
 const getSingleApplication = async (id: string) => {
-    const application = await prisma.application.findUnique({ where: { id } });
+    const application = await prisma.application.findUnique({ where: { id } })
     return application
 }
 const deleteSingleApplication = async (id: string) => {
     try {
-        const application = await prisma.application.delete({ where: { id } });
-        return application;
+        const application = await prisma.application.delete({ where: { id } })
+        return application
     } catch (error) {
-        console.error(`Error deleting application with ID ${id}:`, error);
-        return null;
+        console.error(`Error deleting application with ID ${id}:`, error)
+        return null
     }
-};
+}
 
+const totalApplication = async () => {
+    try {
+        const countedApplication = await prisma.application.count()
+        return countedApplication
+    } catch (error) {
+        console.error(`Error counting application:`, error)
+        return null
+    }
+}
 
-export { getApplication, getSingleApplication, newApplication, deleteSingleApplication }
+export { getApplication, getSingleApplication, newApplication, deleteSingleApplication, totalApplication }
