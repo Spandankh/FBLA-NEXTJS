@@ -77,7 +77,7 @@ const totalJobs = async () => {
 		const countedJob = await prisma.post.count()
 		return countedJob
 	} catch (error) {
-		console.error(`Error counting jobs  ${id}:`, error)
+		console.error(`Error counting jobs:`, error)
 		return null
 	}
 }
