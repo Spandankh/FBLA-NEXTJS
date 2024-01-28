@@ -4,7 +4,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { Job } from '@/lib/type'
 import { MoreHorizontal, Trash } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { deleteJob } from './helper'
+import { deleteJob, totalApp } from './helper'
 import Link from 'next/link'
 import {
 	DropdownMenu,
@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
+import { totalApplicationById } from '@/lib/application'
 
 export const columns: ColumnDef<Job>[] = [
 	{
@@ -36,7 +37,10 @@ export const columns: ColumnDef<Job>[] = [
 			)
 		}
 	},
-
+	{
+		id: 'totalApplication',
+		header: 'Total Application'
+	},
 	{
 		id: 'action',
 
@@ -52,12 +56,12 @@ export const columns: ColumnDef<Job>[] = [
 			}
 			return (
 				<DropdownMenu>
-					<DropdownMenuTrigger asChild className="flex justify-end mx-auto">
+					<DropdownMenuTrigger asChild className="mx-auto flex justify-end">
 						<Button variant="ghost" className="h-8 w-8 p-0">
 							<MoreHorizontal className="h-4 w-4" />
 						</Button>
 					</DropdownMenuTrigger>
-					<DropdownMenuContent align="end" className="bg-slate-200 p-2 rounded-xl">
+					<DropdownMenuContent align="end" className="rounded-xl bg-slate-200 p-2">
 						<DropdownMenuLabel className="pb-1">Actions</DropdownMenuLabel>
 						<DropdownMenuItem
 							className="pb-1"

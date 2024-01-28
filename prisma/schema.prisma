@@ -32,6 +32,14 @@ model Application {
   questionAnswer String[]
 }
 
+
+model Contact {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastEmail String
+  emailAdress String
+  message String
+}
  
 model User {
   id String @id @default(auto()) @map("_id") @db.ObjectId

@@ -59,4 +59,14 @@ const totalApplication = async () => {
     }
 }
 
-export { getApplication, getSingleApplication, newApplication, deleteSingleApplication, totalApplication }
+const totalApplicationById = async (jobId: string) => {
+    try {
+        const countedApplication = await prisma.application.findMany({ where: { jobId } }).count()
+        return countedApplication
+    } catch (error) {
+        console.error(`Error counting application:`, error)
+        return null
+    }
+}
+
+export { getApplication, getSingleApplication, newApplication, deleteSingleApplication, totalApplication, totalApplicationById }

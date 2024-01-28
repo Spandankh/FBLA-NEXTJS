@@ -5,8 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Book, ChevronRight, Contact2, FilePlus2, LayoutDashboard, MonitorCheck } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '../ui/button'
-import { ScrollArea } from '../ui/scroll-area'
-
+ 
 const navItems = [
 	{
 		title: 'Dashboard',
@@ -64,8 +63,8 @@ export default function Sidebar({ className }: React.HTMLAttributes<HTMLDivEleme
 								asChild
 								key={index}
 								className={cn(
-									'w-full justify-start font-normal  rounded-[1rem]',
-									path === nav.href ? 'bg-slate-300 font-bold' : ' hover:bg-slate-400'
+									'w-auto justify-start font-normal rounded-[1rem] bg-slate-300 p-3 m-auto',
+									path === nav.href ? ' font-bold hover:bg-slate-400' : ' bg-transparent hover:bg-slate-400'
 								)}
 							>
 								<Link href={nav.href}>

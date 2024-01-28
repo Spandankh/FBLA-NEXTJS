@@ -12,6 +12,7 @@ import RichTextEditor from './textEditor'
 import { JobFormValue } from '@/lib/type'
 import { useEffect, useState } from 'react'
 import handleSubmit from '@/components/dashboard/poster/handleSumit'
+import { toast } from 'sonner'
 const formSchema = z.object({
 	JobName: z.string().min(2, {
 		message: 'Name must be at least 2 characters'
@@ -80,7 +81,7 @@ export default function CreateJob({
 					questions: data.questions
 				},
 				editMode
-			).then(() => console.log(editMode, id))
+			).then(() => toast.success("Succesfuly submitted job!"))
 		} catch (error) {
 			console.error('Error submitting form:', error)
 		}
