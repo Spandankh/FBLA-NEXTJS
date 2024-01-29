@@ -61,7 +61,7 @@ const totalApplication = async () => {
 
 const totalApplicationById = async (jobId: string) => {
     try {
-        const countedApplication = await prisma.application.findMany({ where: { jobId } }).count()
+        const countedApplication = (await prisma.application.findMany({ where: { jobId } })).length
         return countedApplication
     } catch (error) {
         console.error(`Error counting application:`, error)

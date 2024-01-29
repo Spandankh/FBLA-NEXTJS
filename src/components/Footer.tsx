@@ -1,36 +1,27 @@
 import Link from 'next/link'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
-import { Textarea } from './ui/textarea'
-import { Card } from './ui/card'
 
 export default function Footer() {
 	return (
-		<div className="min-w-screen sticky top-[100vh] bg-[#1e1e1e] text-white">
-			<div className="flex pb">
-				<div className="w-full mx-auto">
-					<div className="grid md:grid-cols-2 uppercase font-semibold p-5 md:p-10 items-center mx-auto justify-center">
-						<div className="grid grid-cols-1 mx-auto justify-between h-full">
-							<Link href="/" className="pb-3">
-								Home
-							</Link>
-							<Link href="/about" className="pb-3">
-								About
-							</Link>
-							<Link href="/careers" className="pb-3">
-								Careers
-							</Link>
-							<Link href="/dashboard" className="">
-								DashBoard
-							</Link>
-						</div>
-						<div>
-							<h1>Get in touch with us!</h1>
-							<Card>
-								<h1>CONTACT</h1>
-							</Card>
-						</div>
+		<div className="max-w-screen sticky top-[100vh] bg-[#1e1e1e] text-white">
+			<div className="w-full">
+				<div className="mx-auto flex justify-center space-x-4 overflow-hidden py-5 text-sm md:text-lg">
+					<div className="flex flex-wrap items-center space-x-4 md:flex-nowrap md:space-y-0">
+						<h1>© 2024 Wario, Inc.</h1>
+						<Link href="/" className="hover:underline">
+							Home
+						</Link>
+						<Link href="/about" className="hover:underline">
+							About
+						</Link>
+						<Link href="/career" className="hover:underline">
+							Careers
+						</Link>
+						<Link href="/contact" className="hover:underline">
+							Contacts
+						</Link>
+						<Link href="/dashboard" className="">
+							DashBoard
+						</Link>
 					</div>
 				</div>
 			</div>

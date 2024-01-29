@@ -1,36 +1,25 @@
 'use client'
 
-import { ColumnDef } from '@tanstack/react-table'
-import { Job } from '@/lib/type'
-import { MoreHorizontal, Trash } from 'lucide-react'
+import { ColumnDef, RowSelection } from '@tanstack/react-table'
+import { ArrowUpDown, Settings, Trash } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { deleteJob, totalApp } from './helper'
 import Link from 'next/link'
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
-import { totalApplicationById } from '@/lib/application'
+import moment from 'moment'
+import { JobApp } from '@/lib/type'
 
-export const columns: ColumnDef<Job>[] = [
-	{
-		accessorKey: 'id'
-	},
+export const columns: ColumnDef<JobApp>[] = [
 	{
 		accessorKey: 'jobName',
 		header: 'Job Name',
 		cell: function Cell({ row }) {
 			const Name = row.getValue('jobName') as string
-			const link = '/career/job/' + row.getValue('id')
+			const link = '/career/job/' + row.original.id
 			return (
 				<>
-					<Link className="text-blue-700 underline" href={link} replace>
+					<Link className="mr-20 text-blue-700 underline" href={link} replace>
 						{Name}
 					</Link>
 				</>
@@ -38,14 +27,36 @@ export const columns: ColumnDef<Job>[] = [
 		}
 	},
 	{
-		id: 'totalApplication',
-		header: 'Total Application'
+		accessorKey: 'createdAt',
+		header: ({ column }) => {
+			return (
+				<Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+					Created
+					<ArrowUpDown className="ml-2 h-4 w-4" />
+				</Button>
+			)
+		},
+		cell: function Cell({ row }) {
+			return <div>{moment(row.original.createdAt).fromNow()}</div>
+		}
 	},
 	{
-		id: 'action',
-
+		accessorKey: 'totalApplications',
+		header: ({ column }) => {
+			return (
+				<Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+					Total Applications
+					<ArrowUpDown className="ml-2 h-4 w-4" />
+				</Button>
+			)
+		},
+		cell: ({ row }) => {
+			return <>{row.original.totalApplications ?? 'N/A'}</>
+		}
+	},
+	{
+		id: 'delete',
 		cell: function Action({ row }) {
-			const router = useRouter()
 			const handleJobDelete = (jobId: string, jobName: string) => {
 				try {
 					deleteJob(jobId)
@@ -55,29 +66,29 @@ export const columns: ColumnDef<Job>[] = [
 				}
 			}
 			return (
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild className="mx-auto flex justify-end">
-						<Button variant="ghost" className="h-8 w-8 p-0">
-							<MoreHorizontal className="h-4 w-4" />
+				<>
+					<div>
+						<Button size="icon" onClick={() => handleJobDelete(row.original.id, row.original.jobName)}>
+							<Trash size={15} color="#C70000" />
 						</Button>
-					</DropdownMenuTrigger>
-					<DropdownMenuContent align="end" className="rounded-xl bg-slate-200 p-2">
-						<DropdownMenuLabel className="pb-1">Actions</DropdownMenuLabel>
-						<DropdownMenuItem
-							className="pb-1"
-							onClick={() => router.push(`jobposter/${row.getValue('id')}`)}
-						>
-							EDIT
-						</DropdownMenuItem>
-						<DropdownMenuSeparator className="bg-black" />
-						<DropdownMenuItem
-							className=" text-red-600 hover:text-red-700"
-							onClick={() => handleJobDelete(row.getValue('id'), row.getValue('name'))}
-						>
-							DELETE
-						</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
+					</div>
+				</>
+			)
+		}
+	},
+
+	{
+		id: 'edit',
+		cell: function Action({ row }) {
+			const router = useRouter()
+			return (
+				<>
+					<div>
+						<Button size="icon" onClick={() => router.push(`jobposter/${row.getValue('id')}`)}>
+							<Settings size={15} />
+						</Button>
+					</div>
+				</>
 			)
 		}
 	}

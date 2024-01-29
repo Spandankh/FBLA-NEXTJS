@@ -15,13 +15,13 @@ export default async function Application() {
 
 	return (
 		<>
-			<div className=" h-screen w-screen">
-				<div className="flex-1 p-3 md:px-10 pb-3 pt-6">
+			<div className="max-w-screen h-screen overflow-hidden">
+				<div className="flex-1 p-3 pb-3 pt-6 md:px-10">
 					<h1 className="text-3xl font-bold tracking-tight">Applications</h1>
 				</div>
 
-				<div className="flex-grow p-3 md:px-10 pb-3 pt-6 w-2/3">
-					<div className="bg-white rounded-[1rem] shadow-xl">
+				<div className="max-w-full flex-grow p-3 pb-3 pt-6 md:px-10">
+					<div className="rounded-[1rem] bg-white shadow-xl">
 						<DataTable columns={columns} data={data} />
 					</div>
 				</div>

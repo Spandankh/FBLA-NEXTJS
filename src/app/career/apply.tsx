@@ -51,10 +51,10 @@ export default function ApplyForm({ jobId, jobName, questions }: ApplyFormProps)
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			FirstName: 'testName',
-			LastName: 'lastNametest',
-			Answers: questions.map(() => ({ answers: 'testAnswer' })),
-			emailAdress: 'testEmail@gmail.com'
+			FirstName: '',
+			LastName: '',
+			Answers: questions.map(() => ({ answers: '' })),
+			emailAdress: ''
 		}
 	})
 	const handleSumbit = async (data: z.infer<typeof formSchema>) => {
@@ -93,7 +93,7 @@ export default function ApplyForm({ jobId, jobName, questions }: ApplyFormProps)
 	}
 
 	return (
-		<Card className="mx-auto bg-white p-4 rounded-[1rem]">
+		<Card className="mx-auto rounded-[1rem] bg-white p-4">
 			<CardContent className="">
 				<Form {...form}>
 					<form onSubmit={form.handleSubmit(handleSumbit)} className="space-y-4">
@@ -204,7 +204,7 @@ export default function ApplyForm({ jobId, jobName, questions }: ApplyFormProps)
 
 						<Button
 							type="submit"
-							className="my-5 text-white text-lg bg-blue-600 hover:bg-blue-800 shadow-lg rounded-[1rem]"
+							className="my-5 rounded-[1rem] bg-blue-600 text-lg text-white shadow-lg hover:bg-blue-800"
 						>
 							Submit Application
 						</Button>

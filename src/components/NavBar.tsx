@@ -22,9 +22,9 @@ const NavBar = () => {
 	}
 
 	return (
-		<nav className="left-0 top-0 w-full z-30 bg-[#171717] border-white-1 mx-auto h-auto   flex items-center justify-between text-[#f2f2f2] font-equinox-sans">
-			<h1 className="w-full text-3xl font-bold px-4">WARIO</h1>
-			<ul className="hidden md:flex mr-auto uppercase">
+		<nav className="border-white-1 font-equinox-sans left-0 top-0 z-30 mx-auto flex h-auto   w-full items-center justify-between bg-[#171717] text-[#f2f2f2]">
+			<h1 className="w-full px-4 text-3xl font-bold">WARIO</h1>
+			<ul className="mr-auto hidden uppercase md:flex">
 				<Link className="p-4" href="/">
 					Home
 				</Link>
@@ -34,37 +34,39 @@ const NavBar = () => {
 				<Link className="p-4" href="/career">
 					Careers
 				</Link>
-				<Link className="p-4" href="/contract">
-					Contract
+				<Link className="p-4" href="/contact">
+					Contact
 				</Link>
 				<Link className="p-4" href="/dashboard">
 					DashBoard
 				</Link>
 			</ul>
 			{/*SMALLER NAV BAR */}
-			<div className="flex flex-col md:hidden justify-end" onClick={handleNav}>
+			<div className="flex flex-col justify-end md:hidden" onClick={handleNav}>
 				{!nav ? <AiOutlineMenu size={20} /> : ''}
 			</div>
 
 			<Sheet open={nav} onOpenChange={setNav}>
-				<SheetContent className="w-[60%] h-full border-r border-r-gray-900 bg-[#000300] text-white" side="left">
+				<SheetContent className="h-full w-[60%] border-r border-r-gray-900 bg-[#000300] text-white" side="left">
 					<SheetHeader>
-						<SheetTitle className="w-full text-3xl font-bold p-4">WARIO</SheetTitle>
+						<SheetTitle className="w-full p-4 text-3xl font-bold">WARIO</SheetTitle>
 						<SheetDescription>
 							<ul className="uppercase ">
-								<li className="p-4 border-b border-gray-600">
-									<Link href="/">HOME</Link>
+								<li className="border-b border-gray-600 p-4">
+									<Link href="/">Home</Link>
 								</li>
-								<li className="p-4 border-b border-gray-600 ">
+								<li className="border-b border-gray-600 p-4 ">
 									<Link href="/about"> About Us</Link>
 								</li>
-								<li className="p-4 border-b border-gray-600">
+								<li className="border-b border-gray-600 p-4">
 									<Link href="/career">CAREERS</Link>
 								</li>
-								<li className="p-4 border-b border-gray-600">
+								<li className="border-b border-gray-600 p-4">
 									<Link href="/dashboard">DASHBOARD</Link>
 								</li>
-								<li className="p-4 border-b border-gray-600">Settings</li>
+								<li className="border-b border-gray-600 p-4">
+									<Link href="/Contact">Contact</Link>
+								</li>
 							</ul>
 						</SheetDescription>
 					</SheetHeader>

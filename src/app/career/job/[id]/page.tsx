@@ -8,8 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import jobDescription from '@/components/career/JobDescr'
 import CoreValueSvg from '../../../../../public/images/fitness-outline-99e3e.svg'
 import { Button } from '@/components/ui/button'
-
-export default async function Career({ params }: { params: { id: string } }) {
+export default async function Career({ params, searchParams }: any) {
 	const JobPostedAgo = (timeStamp: string) => {
 		const postedDate = new Date(timeStamp)
 		const currentDate = new Date()
@@ -19,34 +18,34 @@ export default async function Career({ params }: { params: { id: string } }) {
 	}
 	const res = await getSingleJob(params.id)
 	return (
-		<div className="bg-gradient-to-br from-[#faf0e6bf] to-[#e6f0fabf] min-h-screen min-w-screen">
-			<div className="max-w-[1240px] mx-auto">
+		<div className="min-w-screen min-h-screen bg-gradient-to-br from-[#faf0e6bf] to-[#e6f0fabf]">
+			<div className="mx-auto max-w-[1240px]">
 				<Link href="/career" className="flex pt-2">
 					<ChevronLeft className=" "></ChevronLeft>
-					<p className="text-blue-800 font-bold flex">Back to careers</p>
+					<p className="flex font-bold text-blue-800">Back to careers</p>
 				</Link>
 
-				<section className="pt-3 md:pt-5 flex flex-col justify-center">
+				<section className="flex flex-col justify-center pt-3 md:pt-5">
 					<h1 className="text-[48px] font-bold capitalize">{res?.jobName}</h1>
 					<div className="">
-						<p className="pt-2 pb-2 text-[15px]">
+						<p className="pb-2 pt-2 text-[15px]">
 							Job posted {JobPostedAgo(res!.createdAt.toISOString())} days ago
 						</p>
 					</div>
 					<Separator className="bg-black" />
 				</section>
 
-				<Tabs defaultValue="RoleInfo">
-					<TabsList className="grid w-full h-full grid-cols-2 bg-gray-200 mx-auto mb-5">
+				<Tabs defaultValue={searchParams.status}>
+					<TabsList className="mx-auto mb-5 grid h-full w-full grid-cols-2 bg-gray-200">
 						<TabsTrigger
 							value="RoleInfo"
-							className="text-[20px]  data-[state=active]:bg-white rounded-[10px]"
+							className="rounded-[10px]  text-[20px] data-[state=active]:bg-white"
 						>
 							Role Info
 						</TabsTrigger>
 						<TabsTrigger
 							value="Application"
-							className="text-[20px] data-[state=active]:bg-white rounded-[10px]"
+							className="rounded-[10px] text-[20px] data-[state=active]:bg-white"
 						>
 							Application
 						</TabsTrigger>
@@ -68,8 +67,8 @@ export default async function Career({ params }: { params: { id: string } }) {
 								</div>
 							</TabsContent>
 						</div>
-						<div className="max-w-[400px] min-w-[350px] mx-auto">
-							<div className="bg-gradient-to-br from-[#4b57db] to-[#4383d2] p-5 rounded-xl mx-auto my-5">
+						<div className="mx-auto min-w-[350px] max-w-[400px]">
+							<div className="mx-auto my-5 rounded-xl bg-gradient-to-br from-[#4b57db] to-[#4383d2] p-5">
 								<h1 className="text-[2rem] font-semibold text-white ">Our Core Value</h1>
 								<p className="text-[1rem] text-white">
 									Innovation, Integrity & Collaboration are the most important values at Wario that
@@ -80,7 +79,7 @@ export default async function Career({ params }: { params: { id: string } }) {
 								</div>
 								<Button
 									asChild
-									className="flex justify-center bg-blue-400 text-white rounded-xl hover:bg-blue-700"
+									className="flex justify-center rounded-xl bg-blue-400 text-white hover:bg-blue-700"
 								>
 									<Link href="/about" className="text-[2rem]">
 										Learn More About Us

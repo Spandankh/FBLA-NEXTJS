@@ -6,7 +6,7 @@ import { Trash } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { deleteUser } from './helper'
 import Link from 'next/link'
-import { Document, Page } from 'react-pdf'
+import { ArrowUpDown, MoreHorizontal } from 'lucide-react'
 import { useState } from 'react'
 import {
 	Dialog,
@@ -21,17 +21,23 @@ import {
 import { title } from 'process'
 import { getSingleJob } from '@/lib/jobs'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import moment from 'moment'
 
 export const columns: ColumnDef<Application>[] = [
 	{
-		accessorKey: 'jobId'
-	},
-	{
 		accessorKey: 'jobName',
-		header: 'Job Name',
+		header: ({ column }) => {
+			return (
+				<Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+					Job Name
+					<ArrowUpDown className="ml-2 h-4 w-4" />
+				</Button>
+			)
+		},
+
 		cell: function Cell({ row }) {
 			const Name = row.getValue('jobName') as string
-			const link = '/career/job/' + row.getValue('jobId')
+			const link = '/career/job/' + row.original.jobId
 			return (
 				<>
 					<Link className="text-blue-700 underline" href={link} replace>
@@ -51,22 +57,41 @@ export const columns: ColumnDef<Application>[] = [
 	},
 	{
 		accessorKey: 'emailAdress',
-		header: 'Email'
+		header: 'Email',
+		cell: function Cell({ row }) {
+			const formatedEmail = `mailto:${row.original.emailAdress}?subject=Wario Job Application status regarding job: ${row.original.jobName}`
+			return (
+				<a className="text-blue-500 underline" href={formatedEmail}>
+					Email
+				</a>
+			)
+		}
 	},
 	{
-		accessorKey: 'question'
+		accessorKey: 'createdAt',
+		header: ({ column }) => {
+			return (
+				<Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+					Submitted At
+					<ArrowUpDown className="ml-2 h-4 w-4" />
+				</Button>
+			)
+		},
+		cell: function Cell({ row }) {
+			return <div>{moment(row.original.createdAt).fromNow()}</div>
+		}
 	},
 	{
 		accessorKey: 'questionAnswer',
 		header: 'Answer',
 		cell: function Cell({ row }) {
 			const [showModal, setShowModal] = useState(false)
-			const answers = row.getValue('questionAnswer') as string[]
-			const question = row.getValue('question') as string[]
+			const answers = row.original.questionAnswer as string[]
+			const question = row.original.question as string[]
 			return (
 				<>
 					<Dialog open={showModal} onOpenChange={setShowModal}>
-						<DialogContent className="bg-white max-w-prose">
+						<DialogContent className="max-w-prose bg-white">
 							<ScrollArea className="max-h-[80vh] p-6">
 								<DialogHeader>
 									<DialogTitle className="text-2xl">Answer</DialogTitle>
@@ -109,16 +134,13 @@ export const columns: ColumnDef<Application>[] = [
 			)
 		}
 	},
-	{
-		accessorKey: 'id'
-	},
 
 	{
 		id: 'action',
 		cell: ({ row }) => {
 			return (
 				<div>
-					<Button size="icon" onClick={() => deleteUser(row.getValue('id'))}>
+					<Button size="icon" onClick={() => deleteUser(row.original.id)}>
 						<Trash size={15} color="#C70000" />
 					</Button>
 				</div>

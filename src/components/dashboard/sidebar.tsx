@@ -5,37 +5,32 @@ import { usePathname } from 'next/navigation'
 import { Book, ChevronRight, Contact2, FilePlus2, LayoutDashboard, MonitorCheck } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '../ui/button'
- 
+
 const navItems = [
 	{
 		title: 'Dashboard',
 		href: '/dashboard',
-		icon: LayoutDashboard,
-		label: 'Dashboard'
+		icon: LayoutDashboard
 	},
 	{
 		title: 'Job Poster',
 		href: '/dashboard/jobposter',
-		icon: FilePlus2,
-		label: 'jobposter'
+		icon: FilePlus2
 	},
 	{
 		title: 'Applications',
 		href: '/dashboard/application',
-		icon: Book,
-		label: 'applications'
+		icon: Book
 	},
 	{
 		title: 'Active Jobs',
 		href: '/dashboard/jobs',
-		icon: MonitorCheck,
-		label: 'profile'
+		icon: MonitorCheck
 	},
 	{
-		title: 'Contracts',
-		href: '/dashboard/contracts',
-		icon: Contact2,
-		label: 'Contracts'
+		title: 'Contacts',
+		href: '/dashboard/contacts',
+		icon: Contact2
 	}
 ]
 
@@ -48,12 +43,12 @@ export default function Sidebar({ className }: React.HTMLAttributes<HTMLDivEleme
 	}
 
 	return (
-		<div className={cn(' relative pb-12 bg-white border', className)}>
+		<div className={cn(' relative border bg-white pb-12', className)}>
 			<div
 				className={
 					isOpen
-						? 'space-y-4 py-4 max-w-[150px] md:flex ease-in-out duration-500'
-						: 'max-w-[75px] md:max-w-[100px] ease-in-out duration-500'
+						? 'max-w-[150px] space-y-4 py-4 duration-500 ease-in-out md:flex'
+						: 'max-w-[75px] duration-500 ease-in-out md:max-w-[100px]'
 				}
 			>
 				<div className="py-2">
@@ -63,15 +58,17 @@ export default function Sidebar({ className }: React.HTMLAttributes<HTMLDivEleme
 								asChild
 								key={index}
 								className={cn(
-									'w-auto justify-start font-normal rounded-[1rem] bg-slate-300 p-3 m-auto',
-									path === nav.href ? ' font-bold hover:bg-slate-400' : ' bg-transparent hover:bg-slate-400'
+									'm-auto w-auto justify-start rounded-[1rem] bg-slate-300 p-3 font-normal',
+									path === nav.href
+										? ' font-bold hover:bg-slate-400'
+										: ' bg-transparent hover:bg-slate-400'
 								)}
 							>
 								<Link href={nav.href}>
 									<nav.icon />
 									<div
 										className={
-											isOpen ? 'ease-in-out duration-500' : 'hidden ease-in-out duration-500'
+											isOpen ? 'duration-500 ease-in-out' : 'hidden duration-500 ease-in-out'
 										}
 									>
 										{nav.title}
@@ -85,7 +82,7 @@ export default function Sidebar({ className }: React.HTMLAttributes<HTMLDivEleme
 			<Button
 				asChild
 				onClick={toggleSidebar}
-				className="absolute -right-4 bg-blue-500 rounded-full p-2 w-auto h-auto text-white hover:bg-blue-800"
+				className="absolute -right-4 h-auto w-auto rounded-full bg-blue-500 p-2 text-white hover:bg-blue-800"
 			>
 				<ChevronRight className=" " />
 			</Button>

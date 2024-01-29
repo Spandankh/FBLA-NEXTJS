@@ -58,6 +58,25 @@ const getJobs = async () => {
 	const job = await prisma.post.findMany()
 	return JSON.stringify(job)
 }
+const getJobsWithApp = async () => {
+	const posts = await prisma.post.findMany();
+
+	const jobsWithTotalApplications = await Promise.all(posts.map(async (post) => {
+		const applicationCount = await prisma.application.count({
+			where: {
+				jobId: post.id,
+			},
+		});
+
+		return {
+			...post,
+			totalApplications: applicationCount,
+		};
+	}));
+	console.log(jobsWithTotalApplications)
+	return JSON.stringify(jobsWithTotalApplications);
+};
+
 const getSingleJob = async (id: string) => {
 	const job = prisma.post.findUnique({ where: { id: id } })
 	return job
@@ -82,4 +101,4 @@ const totalJobs = async () => {
 	}
 }
 
-export { getSingleJob, getJobs, newJob, deleteSingleJob, updateJob, totalJobs }
+export { getSingleJob, getJobs, newJob, deleteSingleJob, updateJob, totalJobs, getJobsWithApp }

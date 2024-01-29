@@ -8,6 +8,7 @@ export type Job = {
 }
 export type Application = {
 	id: string
+	createdAt: Date
 	jobId: string
 	jobName: string
 	firstName: string
@@ -25,4 +26,22 @@ export type JobFormValue = {
 	FullTime: boolean | false
 	RequireResume: boolean | true
 	questions: { question: string }[] | []
+}
+
+export type Contact = {
+	id: string
+	firstName: string
+	lastName: string
+	emailAdress: string
+	message: string
+}
+
+export type JobApp = {
+	id: string
+	jobName: string
+	jobDescription: string
+	createdAt: Date
+	fullTime: boolean
+	jobLocation: string | null
+	totalApplications: string
 }
