@@ -52,7 +52,7 @@ export const columns: ColumnDef<Contact>[] = [
 				<>
 					<Dialog open={showModal} onOpenChange={setShowModal}>
 						<DialogContent className="max-w-prose bg-white">
-							<ScrollArea className="max-h-[80vh] p-6">
+							<ScrollArea className="max-h-[80vh] p-6 md:p-10">
 								<DialogHeader>
 									<DialogTitle className="text-2xl">Message</DialogTitle>
 									<DialogDescription className="text-1xl">

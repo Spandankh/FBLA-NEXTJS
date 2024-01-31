@@ -29,7 +29,7 @@ const navItems = [
 	},
 	{
 		title: 'Contacts',
-		href: '/dashboard/contact',
+		href: '/dashboard/contacts',
 		icon: Contact2
 	}
 ]
@@ -47,11 +47,11 @@ export default function Sidebar({ className }: React.HTMLAttributes<HTMLDivEleme
 			<div
 				className={
 					isOpen
-						? 'max-w-[150px] space-y-4 py-4 duration-500 ease-in-out md:flex'
+						? 'max-w-[200px] space-y-4 py-4 text-lg duration-500 ease-in-out md:flex md:text-xl'
 						: 'max-w-[75px] duration-500 ease-in-out md:max-w-[100px]'
 				}
 			>
-				<div className="py-2">
+				<div className="w-full py-2">
 					<div className="space-y-8 p-2">
 						{navItems?.map((nav, index) => (
 							<Button
