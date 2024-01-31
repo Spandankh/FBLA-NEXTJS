@@ -2,8 +2,10 @@ import { Clock, MoveRight, Phone, Users } from 'lucide-react'
 import { getApplication, totalApplication } from '@/lib/application'
 import { totalJobs } from '@/lib/jobs'
 import Link from 'next/link'
+import { CiPhone } from 'react-icons/ci'
+
 import { BsPerson } from 'react-icons/bs'
-import { totalContact } from '@/lib/contact'
+import { getContacts, totalContact } from '@/lib/contact'
 export const dynamic = 'force-dynamic'
 
 export default async function dashboard() {
@@ -11,6 +13,8 @@ export default async function dashboard() {
 	const totalJob = await totalJobs()
 	const totalContacts = await totalContact()
 	const application = await getApplication()
+	const contact = JSON.parse(await getContacts())
+
 	return (
 		<div className="h-screen max-w-full overflow-y-auto md:w-screen">
 			<div className="flex-1 space-y-4 p-4 md:p-10 ">
@@ -87,16 +91,17 @@ export default async function dashboard() {
 											index: number
 										) => (
 											<div key={index}>
-												<div className="flex items-center">
+												<div className="flex">
+													<div className="rounded-full bg-gray-400 p-1">
+														<BsPerson size={20} />
+													</div>
 													<div className="ml-4 space-y-1">
-														<div className="flex">
-															<BsPerson size={20} />
-															<p className="font-medium leading-none">
-																{applicationItem.firstName} {applicationItem.lastName}
-																{'    '}
-																{applicationItem.emailAdress}
-															</p>
-														</div>
+														<p className="font-medium leading-none">
+															{applicationItem.firstName} {applicationItem.lastName}
+														</p>
+													</div>
+													<div className="ml-3 font-medium">
+														{applicationItem.emailAdress}
 													</div>
 												</div>
 											</div>
@@ -122,10 +127,10 @@ export default async function dashboard() {
 						<div className="w-full space-y-1.5 p-6 md:w-auto">
 							<p className=" mb-3 text-gray-600 md:text-xl">Recent Contact</p>
 							<div className="space-y-8">
-								{application.length > 0 ? (
-									application.slice(0, 10).map(
+								{contact.length > 0 ? (
+									contact.slice(0, 10).map(
 										(
-											applicationItem: {
+											contact: {
 												firstName: string
 												lastName: string
 												emailAdress: string
@@ -133,31 +138,30 @@ export default async function dashboard() {
 											index: number
 										) => (
 											<div key={index}>
-												<div className="flex items-center">
+												<div className="flex">
+													<div className="rounded-full bg-green-400 p-1">
+														<CiPhone size={20} />
+													</div>
 													<div className="ml-4 space-y-1">
 														<p className="font-medium leading-none">
-															{applicationItem.firstName} {applicationItem.lastName}
+															{contact.firstName} {contact.lastName}
 														</p>
 													</div>
-													<div className="ml-3 font-medium">
-														{applicationItem.emailAdress}
-													</div>
+													<div className="ml-3 font-medium">{contact.emailAdress}</div>
 												</div>
 											</div>
 										)
 									)
 								) : (
-									<div className="p-8 text-center text-lg font-bold">
-										No recent applications found
-									</div>
+									<div className="p-8 text-center text-lg font-bold">No recent contacts found</div>
 								)}
 							</div>
 
 							<Link
 								className="flex flex-shrink text-xs text-blue-700 hover:underline md:text-base"
-								href="dashboard/application"
+								href="dashboard/contacts"
 							>
-								<p className="">View Application</p>
+								<p className="">View Contacts</p>
 								<MoveRight />
 							</Link>
 						</div>

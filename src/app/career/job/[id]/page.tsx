@@ -8,14 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import jobDescription from '@/components/career/JobDescr'
 import CoreValueSvg from '../../../../../public/images/fitness-outline-99e3e.svg'
 import { Button } from '@/components/ui/button'
+import moment from 'moment'
 export default async function Career({ params, searchParams }: any) {
-	const JobPostedAgo = (timeStamp: string) => {
-		const postedDate = new Date(timeStamp)
-		const currentDate = new Date()
-		const differenceInMs = currentDate.getTime() - postedDate.getTime()
-		const differenceInDays = Math.floor(differenceInMs / (1000 * 60 * 60 * 24))
-		return differenceInDays
-	}
 	const res = await getSingleJob(params.id)
 	return (
 		<div className="min-w-screen min-h-screen bg-gradient-to-br from-[#faf0e6bf] to-[#e6f0fabf]">
@@ -28,9 +22,7 @@ export default async function Career({ params, searchParams }: any) {
 				<section className="flex flex-col justify-center pt-3 md:pt-5">
 					<h1 className="text-[48px] font-bold capitalize">{res?.jobName}</h1>
 					<div className="">
-						<p className="pb-2 pt-2 text-[15px]">
-							Job posted {JobPostedAgo(res!.createdAt.toISOString())} days ago
-						</p>
+						<p className="pb-2 pt-2 text-[15px]">Job posted {moment(res!.createdAt).fromNow()}</p>
 					</div>
 					<Separator className="bg-black" />
 				</section>
@@ -67,7 +59,7 @@ export default async function Career({ params, searchParams }: any) {
 								</div>
 							</TabsContent>
 						</div>
-						<div className="mx-auto min-w-[350px] max-w-[400px]">
+						<div className="mx-auto min-w-[320px] max-w-[400px]">
 							<div className="mx-auto my-5 rounded-xl bg-gradient-to-br from-[#4b57db] to-[#4383d2] p-5">
 								<h1 className="text-[2rem] font-semibold text-white ">Our Core Value</h1>
 								<p className="text-[1rem] text-white">
