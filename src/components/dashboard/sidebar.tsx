@@ -29,7 +29,7 @@ const navItems = [
 	},
 	{
 		title: 'Contacts',
-		href: '/dashboard/contacts',
+		href: '/dashboard/contact',
 		icon: Contact2
 	}
 ]
