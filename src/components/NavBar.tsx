@@ -65,7 +65,7 @@ const NavBar = () => {
 									<Link href="/dashboard">DASHBOARD</Link>
 								</li>
 								<li className="border-b border-gray-600 p-4">
-									<Link href="/Contact">Contact</Link>
+									<Link href="/contact">Contact</Link>
 								</li>
 							</ul>
 						</SheetDescription>
