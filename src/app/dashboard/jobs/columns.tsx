@@ -84,7 +84,7 @@ export const columns: ColumnDef<JobApp>[] = [
 			return (
 				<>
 					<div>
-						<Button size="icon" onClick={() => router.push(`jobposter/${row.getValue('id')}`)}>
+						<Button size="icon" onClick={() => router.push(`jobposter/${row.original.id}`)}>
 							<Settings size={15} />
 						</Button>
 					</div>
