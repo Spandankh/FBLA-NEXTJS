@@ -10,7 +10,7 @@ export default function History() {
 			id: '1',
 			data: '2019',
 			title: 'We Started the Company',
-			body: '5+ Personal Trainers came together and formed Wario, officaly starting its rich history.'
+			body: '5 Personal Trainers came together and formed Wario, officaly starting its rich history.'
 		},
 		{
 			id: '2',
@@ -34,10 +34,10 @@ export default function History() {
 	return (
 		<div className="bg-[#F3F3F3] py-10">
 			<div className="text-center">
-				<h1 className="text-[#19224a]  text-5xl font-bold p-5">Where We Came From</h1>
+				<h1 className="p-5  text-5xl font-bold text-[#19224a]">Where We Came From</h1>
 			</div>
 
-			<div className="container flex justify-center items-center bg-white rounded-[2rem] shadow-2xl my-4 mx-auto">
+			<div className="container mx-auto my-4 flex items-center justify-center rounded-[2rem] bg-white shadow-2xl">
 				<div className="container px-10 py-10">
 					<div className="flex flex-wrap justify-center">
 						{timeline.map((tab, index) => (
@@ -47,9 +47,9 @@ export default function History() {
 								onClick={() => setCurrentTab(tab.id)}
 								className={`cursor-pointer ${
 									currentTab === tab.id
-										? 'bg-blue-700 rounded-[1rem] text-white'
+										? 'rounded-[1rem] bg-blue-700 text-white'
 										: 'hover:bg-gray-200'
-								}   hover:rounded-[1rem] font-semibold text-[20px] p-2 mr-5 mt-2 text-blue-700  max-w-[200px] text-center`}
+								}   mr-5 mt-2 max-w-[200px] p-2 text-center text-[20px] font-semibold  text-blue-700 hover:rounded-[1rem]`}
 							>
 								{tab.data}
 							</button>
@@ -60,8 +60,8 @@ export default function History() {
 							<div key={index}>
 								{currentTab === `${tab.id}` && (
 									<div className="mt-4">
-										<p className="text-[#19224a]  text-[30px] pb-5 font-semibold">{tab.title}</p>
-										<p className="text-[20px]  max-w-[400px] ">{tab.body}</p>
+										<p className="pb-5  text-[30px] font-semibold text-[#19224a]">{tab.title}</p>
+										<p className="max-w-[400px]  text-[20px] ">{tab.body}</p>
 									</div>
 								)}
 							</div>
