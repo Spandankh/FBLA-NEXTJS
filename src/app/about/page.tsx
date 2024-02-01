@@ -89,7 +89,7 @@ export default async function Mission() {
 				<div className="">
 					<div className="text-center">
 						<h1 className="pb-5 text-5xl font-bold text-[#19224a]">Our Core Values</h1>
-						<p className="pb-5 text-2xl">Some more Random Text Woooo Some more Random Text Woooo!</p>
+						<p className="pb-5 text-2xl">Driven by Purpose, Guided by Values!</p>
 					</div>
 					<CoreValue />
 				</div>

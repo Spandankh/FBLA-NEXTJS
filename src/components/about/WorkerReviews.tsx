@@ -41,13 +41,13 @@ export default function Review() {
 					})
 				]}
 			>
-				<CarouselContent className="-ml-3 md:-ml-6 max-h-[300px] w-full">
+				<CarouselContent className="-ml-3 max-h-[300px] md:-ml-6">
 					{WorkerReviews.map((reviews, index) => (
-						<CarouselItem key={index} className="pl-3 md:pl-6 md:basis-1/2 lg:basis-1/3 ">
-							<div className="p-1 bg-white rounded-[2rem] max-h-[400px]">
-								<CardContent className="flex items-center justify-center min-h-[300px] flex-col text-center">
-									<div className="mb-2 text-2xl flex">
-										<Avatar className="mr-3 w-15 h-12">
+						<CarouselItem key={index} className="pl-3 md:basis-1/2 md:pl-6 lg:basis-1/3 ">
+							<div className="max-h-[400px] rounded-[2rem] bg-white p-1">
+								<CardContent className="flex min-h-[300px] flex-col items-center justify-center text-center">
+									<div className="mb-2 flex text-2xl">
+										<Avatar className="w-15 mr-3 h-12">
 											<AvatarImage className="" src={reviews.image} />
 										</Avatar>
 										{reviews.name}
