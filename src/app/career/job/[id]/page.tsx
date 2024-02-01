@@ -61,7 +61,7 @@ export default async function Career({ params, searchParams }: any) {
 						</div>
 						<div className="mx-auto min-w-[320px] max-w-[400px]">
 							<div className="mx-auto my-5 rounded-xl bg-gradient-to-br from-[#4b57db] to-[#4383d2] p-5">
-								<h1 className="text-[2rem] font-semibold text-white ">Our Core Value</h1>
+								<h1 className="text-[2rem] font-semibold text-white ">Our Core Values</h1>
 								<p className="text-[1rem] text-white">
 									Innovation, Integrity & Collaboration are the most important values at Wario that
 									have driven this company since day 1!
