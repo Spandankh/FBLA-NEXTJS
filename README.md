@@ -1,17 +1,26 @@
-Website for FBLA project! 
-Technologies used include:
-  <li>NextJs</li>
-    <li>TypeScript</li>
-      <li>MongoDb</li>
-        <li>Tailwind</li>
+# FBLA Project Website
+
+This website is built using the following technologies:
+
+- Next.js
+- TypeScript
+- MongoDB
+- Prisma
+- Tailwind CSS
 
 
-<h1>How to run locally</h1>
-1. Git clone this repo using git clone https://github.com/Spandankh/FBLA-NEXTJS.git
-2. Open the file and run npm i
-3. Run npm run dev and go to localhost:3000
-4. Enjoy! 
+## How to Run Locally
 
-<h1>
-  All the number & text in this website are soley meant for showcase and are not real numbers.
-</h1>
+1. Git clone this repo using `git clone https://github.com/Spandankh/FBLA-NEXTJS.git`
+2. Open the cloned folder and run `npm install`
+3. Run `npm run dev` and visit [localhost:3000](http://localhost:3000)
+4. Enjoy!
+
+## Image and Icon Sources
+
+All images and icons featured on this website were obtained freely from the following platforms:
+
+- [Unsplash](https://unsplash.com/)
+- [undraw](https://undraw.co/illustrations)
+- [ManyPixels](https://www.manypixels.co/gallery)
+- [Pixabay](https://pixabay.com/)
