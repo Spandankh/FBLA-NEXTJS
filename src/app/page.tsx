@@ -32,7 +32,7 @@ export default async function Home() {
 							<div className="my-20 mt-10 flex flex-col items-center justify-center text-center text-[50px] md:text-[100px]">
 								<h1 className="font-bold">Transform Lives</h1>
 								<h1 className="font-bold">AND</h1>
-								<h1 className="text-left font-bold text-blue-500">Shape Futures</h1>
+								<h1 className="font-bold text-blue-500">Shape Futures</h1>
 								<Button
 									asChild
 									className="flex justify-center rounded-[25px] bg-blue-500 p-7 text-[20px] uppercase text-white hover:bg-blue-700"
