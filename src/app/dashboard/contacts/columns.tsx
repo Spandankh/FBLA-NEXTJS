@@ -3,7 +3,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { Trash } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { deleteUser } from './helper'
+import { deleteCon } from './helper'
 import Link from 'next/link'
 import { Document, Page } from 'react-pdf'
 import { useState } from 'react'
@@ -68,6 +68,18 @@ export const columns: ColumnDef<Contact>[] = [
 						View
 					</Button>
 				</>
+			)
+		}
+	},
+	{
+		id: 'action',
+		cell: ({ row }) => {
+			return (
+				<div>
+					<Button size="icon" onClick={() => deleteCon(row.original.id)}>
+						<Trash size={15} color="#C70000" />
+					</Button>
+				</div>
 			)
 		}
 	}
