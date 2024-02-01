@@ -47,7 +47,7 @@ export default function Review() {
 							<div className="max-h-[400px] rounded-[2rem] bg-white p-1">
 								<CardContent className="flex min-h-[300px] flex-col items-center justify-center text-center">
 									<div className="mb-2 flex text-2xl">
-										<Avatar className="w-15 mr-3 h-12">
+										<Avatar className="md:w-15 mr-3 h-12">
 											<AvatarImage className="" src={reviews.image} />
 										</Avatar>
 										{reviews.name}
