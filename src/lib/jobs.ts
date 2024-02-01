@@ -3,7 +3,7 @@ import prisma from '@/lib/db'
 const newJob = async (
 	jobName: string,
 	jobDescription: string,
-	jobLocation: string | null,
+	jobLocation: string,
 	fullTime: boolean,
 	requireResume: boolean,
 	questions: string[]
@@ -30,7 +30,7 @@ const updateJob = async (
 	id: string,
 	jobName: string,
 	jobDescription: string,
-	jobLocation: string | null,
+	jobLocation: string,
 	fullTime: boolean,
 	requireResume: boolean,
 	questions: string[]
