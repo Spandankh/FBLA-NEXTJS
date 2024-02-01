@@ -13,10 +13,33 @@ This website is built using the following technologies:
 
 1. Git clone this repo using `git clone https://github.com/Spandankh/FBLA-NEXTJS.git`
 2. Open the cloned folder and run `npm install`
-3. Run `npm run dev` and visit [localhost:3000](http://localhost:3000)
-4. Enjoy!
+3. Add a .env file containing these values:
+    ```
+    DATABASE_URL="mongodb url here"
+    NEXTAUTH_URL="http://localhost:3000"
+    NEXTAUTH_SECRET="<Type some random numbers and string here>"
+    ```
+4. Run `npx prisma generate && next build` and visit [localhost:3000](http://localhost:3000)
+5. Enjoy!
 
-## Image and Icon Sources
+## Site Map
+
+- Home
+- About
+- Careers
+   - Specific job pages
+- Technologies
+  - Next.js
+  - TypeScript
+  - MongoDB
+  - Tailwind CSS
+- Contacts
+- DashBoard
+  - Job Poster
+  - Application
+  - Active Jobs
+  - Contacts
+ ## Image and Icon Sources
 
 All images and icons featured on this website were obtained freely from the following platforms:
 
