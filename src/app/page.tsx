@@ -84,8 +84,8 @@ export default async function Home() {
 								</div>
 								<div className="mb-8 max-w-prose font-sans text-[30px] md:tracking-[0.020rem]">
 									At Wario, we&apos;re more than just a workplace — we&apos;re a family. We are
-									commited to a supportive and collaborative environment extends to every member of
-									our team. When you join us, you&apos;ll enjoy a range of benefits.
+									commited to a supportive and collaborative environment that extends to every member
+									of our team. When you join us, you&apos;ll enjoy a range of benefits.
 								</div>
 								<div className="grid grid-cols-2 gap-4">
 									<Link
@@ -115,7 +115,7 @@ export default async function Home() {
 							<h1 className="text-[2rem] sm:text-[4rem] md:text-[3.5rem]">Our Benefits</h1>
 
 							<p className="text-[1rem] sm:text-[1.3rem]">
-								We strive to provide the best benefits to our employeees
+								We strive to provide the best benefits to our employees
 							</p>
 						</div>
 					</ListReveal>
@@ -133,7 +133,10 @@ export default async function Home() {
 									What Are You Waiting For?
 								</h1>
 								<h1 className="pb-15 text-md text-center tracking-tight text-gray-900 sm:text-6xl">
-									Current Job <span className="text-blue-600">Openings</span>
+									Current Job{' '}
+									<Link href="/career" className="text-blue-600">
+										Openings
+									</Link>
 								</h1>
 							</div>
 						</ListReveal>
