@@ -39,7 +39,7 @@ export default async function JobList(){
                     ) => (
                         <div key={index} className=" flex justify-center overflow-hidden">
                             <li className="mx-2 my-4 flex h-auto  w-[700px] flex-col rounded-2xl border bg-white p-4 shadow-xl duration-300 hover:scale-105">
-                                <Link href={`/career/job/${item.id}`}>
+                                <Link href={`/career/job/${item.id}?status=RoleInfo`}>
                                     <div className="text-md text-left text-[16px] font-semibold uppercase">
                                         {item.jobName}{' '}
                                         <span className="font-semibold text-gray-700">

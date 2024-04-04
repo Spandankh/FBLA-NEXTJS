@@ -15,10 +15,10 @@ import { toast } from 'sonner'
 import JSConfetti from 'js-confetti'
 
 const formSchema = z.object({
-	FirstName: z.string().min(2, {
-		message: 'Name must be at least 2 characters'
+	FirstName: z.string().regex(new RegExp(/^[a-zA-Z]+[-'s]?[a-zA-Z ]+$/), 'Name should contain only alphabets').min(2, {
+		message: 'Name must be at least 2 characters and contain only letters'
 	}),
-	LastName: z.string().min(2, {
+	LastName: z.string().regex(new RegExp(/^[a-zA-Z]+[-'s]?[a-zA-Z ]+$/), 'Name should contain only alphabets').min(2, {
 		message: 'Name must be at least 2 characters'
 	}),
 	emailAdress: z.string().min(1, { message: 'Email is required!' }).email({ message: 'Must be a valid email!' }), // Corrected field name and validation
